@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "Report Manager (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "Report Manager (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}
