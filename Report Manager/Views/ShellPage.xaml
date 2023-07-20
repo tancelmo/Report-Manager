@@ -10,23 +10,98 @@
     Loaded="OnLoaded">
 
     <Grid>
-        <Grid x:Name="AppTitleBar"
+        <Grid x:Name="AppTitleBar"      
               Canvas.ZIndex="1"
               Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
               IsHitTestVisible="True"
               VerticalAlignment="Top">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition x:Name="IconColumn" Width="auto"/>
+                <ColumnDefinition x:Name="TitleColumn" Width="auto"/>
+                <ColumnDefinition x:Name="LeftDragColumn" Width="*"/>
+                <ColumnDefinition x:Name="ComboBoxFilterColumn" Width="auto"/>
+                <ColumnDefinition x:Name="SearchColumn" Width="auto"/>
+                <ColumnDefinition x:Name="RightDragColumn" Width="*"/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+
+            <!--<Border Grid.Column="1" Background="Green"/>
+            <Border Grid.Column="2" Background="AliceBlue"/>
+            <Border Grid.Column="3" Background="LawnGreen"/>
+            <Border Grid.Column="4" Background="PaleGreen"/>
+            <Border Grid.Column="5" Background="Gold"/>
+            <Border Grid.Column="6" Background="Fuchsia"/>-->
+
+
+
             <Image Source="/Assets/WindowIcon.ico"
-                   HorizontalAlignment="Left"
-                   Width="16"
-                   Height="16" />
+                       HorizontalAlignment="Left"
+                       Width="16"
+                       Height="16"
+                       Grid.Column="1"
+                       Margin="0 0 0 0"/>
+
+            <TextBlock x:Name="VersionText" Text="Beta" Grid.Column="2" Grid.ColumnSpan="2" Margin="120 0 0 0" ToolTipService.ToolTip="Alpha version, this build not represent the final enviroment for this application" Foreground="{ThemeResource AppBarItemDisabledForegroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
             <TextBlock x:Name="AppTitleBarText"
                        VerticalAlignment="Center"
                        TextWrapping="NoWrap"
-                       Style="{StaticResource CaptionTextBlockStyle}"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="3"
                        Margin="28,0,0,0"/>
+            <ComboBox
+                    x:Name="GeneralSearchFilter"
+                    x:FieldModifier="public"
+                    Width="160"
+                    Margin="0 0 5 0"
+                    Height="32"
+                    Grid.Column="4" 
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed"/>
+            <AutoSuggestBox 
+                    x:Name="GeneralSearchBox"
+                    x:FieldModifier="public"
+                    Grid.Column="5" 
+                    QueryIcon="Find"
+                    PlaceholderText="Search"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                    Margin="4,0"
+                    Width="500"
+                    TextChanged="GeneralSearchBox_TextChanged"/>
+            <Button Grid.Column="6" ToolTipService.ToolTip="" Padding="0" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 8 150 0">
+                <Button.Content>
+                    <PersonPicture Width="32" />
+                </Button.Content>
+                <Button.Flyout>
+                    <Flyout Placement="Bottom" AreOpenCloseAnimationsEnabled="True">
+                        <StackPanel>
+                            <Grid Margin="0 0 0 10">
+                                <PersonPicture HorizontalAlignment="Left" VerticalAlignment="Top" Width="48" />
+                                <TextBlock x:Name="PersonFlyoutUserName" IsTextSelectionEnabled="True" Text="User Name" FontSize="15" Margin="60 3 0 0"/>
+                                <TextBlock x:Name="PersonFlyoutUserMail" IsTextSelectionEnabled="True" Text="admin@admin.com" FontSize="13" Margin="60 23 0 0"/>
+                            </Grid>
+                            <MenuFlyoutSeparator/>
+                            <Button x:Name="AccouConfig" HorizontalAlignment="Stretch" Margin="0 15 0 0">
+                                <Button.Content>
+                                    <Grid>
+                                        <TextBlock Text="Configurações da conta" Margin="30 0 0 0"/>
+                                        <FontIcon Glyph="&#xE713;" FontSize="15" HorizontalAlignment="Left" />
+                                    </Grid>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
         </Grid>
         <NavigationView
+            ItemInvoked="NavigationViewControl_ItemInvoked"
             x:Name="NavigationViewControl"
+            x:FieldModifier="public"
             Canvas.ZIndex="0"
             IsBackButtonVisible="Visible"
             IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
@@ -43,12 +118,59 @@
                 TODO: Update item icons by updating FontIcon.Glyph properties.
                 https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
-                <NavigationViewItem x:Uid="Shell_Main" helpers:NavigationHelper.NavigateTo="Report_Manager.ViewModels.MainViewModel">
-                    <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
-                    </NavigationViewItem.Icon>
+                <NavigationViewItem x:Name="nvBenches" Icon="ContactPresence" Tag="Benches" x:Uid="Shell_Benches">
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem x:Name="nvBenches1" Visibility="Visible" x:Uid="Shell_Benches1" Tag="SONICAL" helpers:NavigationHelper.NavigateTo="Report_Manager.ViewModels.SonicalViewModel" >
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xe80a;"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem x:Name="nvBenches2" Visibility="Visible" x:Uid="Shell_Benches2" Tag="UTG" helpers:NavigationHelper.NavigateTo="Report_Manager.ViewModels.UTG250ViewModel">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xe80a;"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem x:Name="nvBenches3" Visibility="Visible" x:Uid="Shell_Benches3" Tag="UM4000" helpers:NavigationHelper.NavigateTo="Report_Manager.ViewModels.UM4000ViewModel">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xe80a;"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
+
+
+                <NavigationViewItem x:Name="nvFieldServices" x:Uid="Shell_FieldServices" Tag="Field_Services" helpers:NavigationHelper.NavigateTo="Report_Manager.ViewModels.HomeFieldServicesViewModel">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE804;"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem x:Uid="Shell_StatusReport" Tag="Status_Report" helpers:NavigationHelper.NavigateTo="Report_Manager.ViewModels.StatusReportViewModel">
+                            <NavigationViewItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9F9;"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem x:Uid="Shell_Inventory" Tag="Inventory" helpers:NavigationHelper.NavigateTo="Report_Manager.ViewModels.InventoryViewModel">
+                            <NavigationViewItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74C;"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
             </NavigationView.MenuItems>
+
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem x:Uid="Shell_Account" IsEnabled="True" Icon="Contact" >
+
+                    <NavigationViewItem.InfoBadge>
+                        <InfoBadge x:Name="bg1"
+                                Value="100"
+                                Visibility="Visible"/>
+                    </NavigationViewItem.InfoBadge>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Shell_Help" IsEnabled="False" Icon="Help"/>
+            </NavigationView.FooterMenuItems>
+
             <NavigationView.HeaderTemplate>
                 <DataTemplate>
                     <Grid>

@@ -16,6 +16,13 @@ public class PageService : IPageService
     {
         Configure<MainViewModel, MainPage>();
         Configure<SettingsViewModel, SettingsPage>();
+        Configure<SonicalViewModel, SonicalPage>();
+        Configure<UM4000ViewModel, UM4000Page>();
+        Configure<UTG250ViewModel, UTG250Page>();
+        Configure<StatusReportViewModel, StatusReportPage>();
+        Configure<ScheduleViewModel, SchedulePage>();
+        Configure<HomeFieldServicesViewModel, HomeFieldServicesPage>();
+        Configure<InventoryViewModel, InventoryPage>();
     }
 
     public Type GetPageType(string key)

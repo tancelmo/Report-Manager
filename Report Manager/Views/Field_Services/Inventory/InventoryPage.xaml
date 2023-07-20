@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Report_Manager.Views.InventoryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helpers="using:Report_Manager.Helpers"
+    mc:Ignorable="d">
+
+    <Grid x:Name="ContentArea">
+        <NavigationView x:Name="nvSample"
+                        PaneDisplayMode="Top"
+                        IsBackButtonVisible="Visible"
+                        IsSettingsVisible="False"
+                        VerticalAlignment="Top"
+                        SelectedItem="Schedule Preview">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Home" Content="Schedule Preview" x:Name="SamplePage1Item" helpers:NavigationHelper.NavigateTo="Report_Manager.ViewModels.UTG250ViewModel" />
+                <NavigationViewItem Icon="Add" Content="Add" x:Name="SamplePage2Item" />
+            </NavigationView.MenuItems>
+            <Frame x:Name="contentFrame">
+                <TextBlock Text="opa"/>
+            </Frame>
+
+        </NavigationView>
+    </Grid>
+</Page>

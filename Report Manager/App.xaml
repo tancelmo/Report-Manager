@@ -1,7 +1,9 @@
 ﻿<Application
     x:Class="Report_Manager.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Report_Manager.Data"
+    xmlns:dataGrid="using:Syncfusion.UI.Xaml.DataGrid">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -10,6 +12,58 @@
                 <ResourceDictionary Source="/Styles/Thickness.xaml" />
                 <ResourceDictionary Source="/Styles/TextBlock.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <local:CustomRowStyleSelector x:Key="rowStyleSelector" />
+
+            <Style x:Key="Status_000" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="#C6EFCE" />
+                <Setter Property="Foreground" Value="#006100" />
+            </Style>
+            <Style x:Key="Status_001" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="#ffeb9c" />
+                <Setter Property="Foreground" Value="#9c5700" />
+            </Style>
+            <Style x:Key="Status_002" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="#4472c4" />
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+
+            <Style x:Key="Status_003" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="#ffeb9c" />
+                <Setter Property="Foreground" Value="#9c5700" />
+            </Style>
+            <Style x:Key="Status_004" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <Style x:Key="Status_005" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="Red" />
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+            <Style x:Key="Status_006" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <Style x:Key="Status_007" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <Style x:Key="Status_008" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <Style x:Key="Status_009" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <Style x:Key="Status_010" TargetType="dataGrid:GridCell">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+
+
+
+            <!--<x:Double x:Key="ContentDialogMaxWidth">1000</x:Double>-->
+
+            <!--<x:Double x:Key="ContentDialogMinWidth">400</x:Double>-->
+            <x:Double x:Key="TeachingTipMaxHeight">700</x:Double>
+            <!--<x:Double x:Key="TeachingTipMinWidth">600</x:Double>-->
+            <x:Double x:Key="TeachingTipMaxWidth">1024</x:Double>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

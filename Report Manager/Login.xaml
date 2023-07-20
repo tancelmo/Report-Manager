@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<windowex:WindowEx
+    x:Class="Report_Manager.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Report_Manager"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:windowex="using:WinUIEx"
+    mc:Ignorable="d">
+
+    <windowex:WindowEx.Backdrop>
+        <windowex:MicaSystemBackdrop/>
+    </windowex:WindowEx.Backdrop>
+    <Grid x:Name="window_main" x:FieldModifier="public" >
+        <Grid x:Name="AppTitleBarW10" 
+              Background="Transparent"
+              Height="40"  
+              VerticalAlignment="Top">
+
+            <TextBlock x:Name="AppTitleTextBlock" Text="Report Manager"
+                   Padding="0"
+                   TextWrapping="NoWrap"
+                   Style="{StaticResource CaptionTextBlockStyle}" 
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="20,15,0,0"
+                   FontSize="14"/>
+        </Grid>
+        <Grid x:Name="AppTitleBar"  
+                Height="48" HorizontalAlignment="Center"  VerticalAlignment="Top">
+
+        </Grid>
+        <Button Content="&#xE946;" ToolTipService.ToolTip="Sobre" IsTabStop="False" BorderBrush="Transparent" Background="Transparent" FontFamily="Segoe MDL2 Assets" Width="32" Height="32" Padding="0" FontSize="20" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button.Flyout>
+                <Flyout>
+                    <StackPanel>
+
+                        <TextBlock Style="{ThemeResource BaseTextBlockStyle}" FontSize="20" Text="Sobre" Margin="0,0,0,12" />
+                        <TextBlock x:Name="version" Text="Teste" IsTextSelectionEnabled="True"/>
+                        <HyperlinkButton Content="Desenvolvido por Taliston A. Silva" NavigateUri="http://github.com/tancelmo" />
+                        <HyperlinkButton Content="Reportar um problema" NavigateUri="http://github.com/tancelmo" />
+                        <HyperlinkButton Content="Icons made by FlatIcon.com" NavigateUri="mailto:a@gmail.com" />
+
+                    </StackPanel>
+                </Flyout>
+            </Button.Flyout>
+        </Button>
+        <Frame x:Name="contentFrame" Margin="0 45 0 50"/>
+    </Grid>
+</windowex:WindowEx>

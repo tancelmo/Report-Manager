@@ -44,7 +44,16 @@ public partial class App : Application
 
     public App()
     {
+        StartUp.CreateFilesIfNotExist();
+        StartUp.getStrings();
+        StartUp.Language();
+
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjU1OTUzNEAzMjMyMmUzMDJlMzBOemFHRW1YL2dDR0RNU1ZXWThvV2xUUVVPWmxaWmVKS05DYnpBck1UL0U4PQ==");
+
         InitializeComponent();
+
+        // Apply theme choice for login window.
+        StartUp.SetTheme();
 
         Host = Microsoft.Extensions.Hosting.Host.
         CreateDefaultBuilder().
@@ -69,6 +78,20 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<InventoryViewModel>();
+            services.AddTransient<InventoryPage>();
+            services.AddTransient<HomeFieldServicesViewModel>();
+            services.AddTransient<HomeFieldServicesPage>();
+            services.AddTransient<ScheduleViewModel>();
+            services.AddTransient<SchedulePage>();
+            services.AddTransient<StatusReportViewModel>();
+            services.AddTransient<StatusReportPage>();
+            services.AddTransient<UTG250ViewModel>();
+            services.AddTransient<UTG250Page>();
+            services.AddTransient<UM4000ViewModel>();
+            services.AddTransient<UM4000Page>();
+            services.AddTransient<SonicalViewModel>();
+            services.AddTransient<SonicalPage>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<MainViewModel>();
@@ -90,10 +113,20 @@ public partial class App : Application
         // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
     }
 
-    protected async override void OnLaunched(LaunchActivatedEventArgs args)
-    {
-        base.OnLaunched(args);
+    //protected async override void OnLaunched(LaunchActivatedEventArgs args)
+    //{
+    //    base.OnLaunched(args);
 
-        await App.GetService<IActivationService>().ActivateAsync(args);
+    //    await App.GetService<IActivationService>().ActivateAsync(args);
+    //}
+
+    protected override void OnLaunched(LaunchActivatedEventArgs args)
+    {
+        Login window = new Login();
+        window.Activate();
+
+        //base.OnLaunched(args);
+
+        //await App.GetService<IActivationService>().ActivateAsync(args);
     }
 }

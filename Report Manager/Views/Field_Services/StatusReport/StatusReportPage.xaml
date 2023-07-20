@@ -1,0 +1,91 @@
+﻿<Page
+    x:Class="Report_Manager.Views.StatusReportPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent"/>
+
+        <Storyboard x:Name="storyBoardKeyNotes" x:FieldModifier="public">
+
+            <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True"
+                                           Storyboard.TargetProperty="(FrameworkElement.Width)" 
+                                           Storyboard.TargetName="borderNotes">
+                <EasingDoubleKeyFrame KeyTime="0:0:.1" Value="300"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True"
+                                           Storyboard.TargetProperty="(FrameworkElement.Height)" 
+                                           Storyboard.TargetName="borderNotes">
+                <EasingDoubleKeyFrame KeyTime="0:0:.1" Value="80"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Grid x:Name="ContentArea">
+        <NavigationView x:Name="NavView"
+                        x:FieldModifier="public"
+                        Loaded="NavView_Loaded"
+                        ItemInvoked="NavView_ItemInvoked"
+                        BackRequested="NavView_BackRequested"
+                        PaneDisplayMode="Top"
+                        IsBackButtonVisible="Collapsed"
+                        IsSettingsVisible="False"
+                        VerticalAlignment="Top"
+                        AlwaysShowHeader="False"
+                        Background="Transparent" Opacity="1">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Calendar" Tag="schedule" x:Uid="Shell_Schedule" />
+                <NavigationViewItem Tag="add" Content="Executed" x:Uid="Shell_Executed">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE930;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Icon="Calendar" Tag="schedule2" x:Uid="Shell_AVG" />
+                <NavigationViewItem Icon="ContactInfo" Tag="schedule1" x:Uid="Shell_CostumerList" />
+                <NavigationViewItem Icon="ContactInfo" Tag="schedule4" x:Uid="Shell_EventList" />
+
+            </NavigationView.MenuItems>
+
+            <Frame x:Name="ContentFrame" IsTabStop="True"
+                   NavigationFailed="ContentFrame_NavigationFailed" />
+
+
+        </NavigationView>
+        <Button x:Name="btnPageSettings" Click="btnPageSettings_Click" HorizontalAlignment="Right" Margin="0 0 0 0" Width="40" Height="40" Background="Transparent" BorderThickness="0" VerticalAlignment="Top">
+            <Button.Content>
+                <Grid>
+                    <AnimatedIcon x:Name='AnimatedIcon' HorizontalAlignment="Right">
+                        <AnimatedIcon.Source>
+                            <animatedvisuals:AnimatedSettingsVisualSource/>
+                        </AnimatedIcon.Source>
+                        <AnimatedIcon.FallbackIconSource>
+                            <FontIconSource FontFamily="Segoe MDL2 Assets" FontSize="30" Glyph="&#xE713;"/>
+                        </AnimatedIcon.FallbackIconSource>
+                    </AnimatedIcon>
+                </Grid>
+
+
+            </Button.Content>
+            <ToolTipService.ToolTip>
+                <TextBlock x:Uid="ConfigToolTip"/>
+            </ToolTipService.ToolTip>
+        </Button>
+
+        <Button x:Name="btnRefresh" Click="btnRefresh_Click" ToolTipService.ToolTip="Refresh" FontFamily="Segoe MDL2 Assets" FontSize="15" Content="&#xe72c;" HorizontalAlignment="Right" Margin="0 0 40 0" Width="40" Height="40" Background="Transparent" BorderThickness="0" VerticalAlignment="Top"/>
+        <Button x:Name="btnMapView" Click="btnMapView_Click" ToolTipService.ToolTip="Map View" FontFamily="Segoe MDL2 Assets" FontSize="15" Content="&#xE707;" HorizontalAlignment="Right" Margin="0 0 80 0" Width="40" Height="40" Background="Transparent" BorderThickness="0" VerticalAlignment="Top"/>
+        <Border x:Name="borderNotes" Visibility="Collapsed" x:FieldModifier="public" Translation="0,0,15" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}" BorderThickness="1" Margin="0 -85 " Width="0" Height="0" HorizontalAlignment="Right" VerticalAlignment="Top" CornerRadius="5">
+            <Border.Background>
+                <SolidColorBrush Color="{ThemeResource TeachingTipTransientBackground}" Opacity="1"/>
+            </Border.Background>
+            <Border.Shadow>
+                <ThemeShadow />
+            </Border.Shadow>
+            <ScrollViewer>
+                <TextBlock x:FieldModifier="public" IsTextSelectionEnabled="True" Margin="5 0" x:Name="scheduleCardNotes" Width="290" Height="auto" TextWrapping="Wrap"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Page>

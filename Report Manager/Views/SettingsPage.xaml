@@ -50,6 +50,14 @@
                     </RadioButton>
                 </StackPanel>
             </StackPanel>
+            <TextBlock Text="Display Language" Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+            <StackPanel Margin="{StaticResource XSmallTopMargin}">
+
+
+                <ComboBox x:Name="cbxLanguage" x:Uid="Select" DropDownClosed="cbxLanguage_DropDownClosed" />
+
+            </StackPanel>
 
             <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
 
@@ -61,7 +69,27 @@
                     Margin="{StaticResource XSmallTopMargin}"
                     Style="{ThemeResource BodyTextBlockStyle}" />
                 <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" />
+                <!--<ComboBox Background="Green" Text="Executado" SelectedIndex="0" Margin="5">
+                    <ComboBoxItem Content="Executado"/>
+                    <ComboBoxItem Content="Pendente"/>
+                    <ComboBoxItem Content="Programado"/>
+                </ComboBox>
+                <ComboBox Background="Yellow" Foreground="Black" Text="Pendente" SelectedIndex="0" Margin="5">
+                    <ComboBoxItem Content="Pendente"/>
+                </ComboBox>
+                <ComboBox Background="Blue" Text="Programado" SelectedIndex="0" Margin="5">
+                    <ComboBoxItem Content="Programado"/>
+                </ComboBox>-->
             </StackPanel>
+
         </StackPanel>
+        <InfoBar
+                x:Name="infoBarGeneral"
+                IsOpen="False"
+                Severity="Success"
+                Title="Language Otions"
+                VerticalAlignment="Bottom"
+                Margin="25"
+                Message="Display language changed to {0}, restart the application for the changes to take effect" />
     </Grid>
 </Page>

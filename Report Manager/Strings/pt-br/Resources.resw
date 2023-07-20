@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Report Manager</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Report Manager</value>
+  </data>
+  <data name="Shell_Main.Content" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="Settings_Personalization.Text" xml:space="preserve">
+    <value>Personalização</value>
+  </data>
+  <data name="Settings_Theme.Text" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve">
+    <value>Claro</value>
+  </data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
+    <value>Escuro</value>
+  </data>
+  <data name="Settings_Theme_Default.Content" xml:space="preserve">
+    <value>Automático (sistema)</value>
+  </data>
+  <data name="Settings_About.Text" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="Settings_AboutDescription.Text" xml:space="preserve">
+    <value>TODO: Replace with your app description.</value>
+  </data>
+  <data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
+    <value>Privacy Statement</value>
+  </data>
+  <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
+    <value>https://YourPrivacyUrlGoesHere/</value>
+  </data>
+  <data name="Shell_Account.Content" xml:space="preserve">
+    <value>Conta</value>
+  </data>
+  <data name="Shell_Benches.Content" xml:space="preserve">
+    <value>Bancas de Calibração</value>
+  </data>
+  <data name="Shell_Benches1.Content" xml:space="preserve">
+    <value>SONICAL SN G6</value>
+  </data>
+  <data name="Shell_Benches2.Content" xml:space="preserve">
+    <value>UT-G250</value>
+  </data>
+  <data name="Shell_Benches3.Content" xml:space="preserve">
+    <value>UM4000</value>
+  </data>
+  <data name="Shell_Help.Content" xml:space="preserve">
+    <value>Ajuda</value>
+  </data>
+  <data name="Shell_Sonical.Content" xml:space="preserve">
+    <value>Sonical</value>
+  </data>
+  <data name="btnBack.Content" xml:space="preserve">
+    <value>Voltar</value>
+  </data>
+  <data name="btnForgotPass.Content" xml:space="preserve">
+    <value>Esqueceu a senha?</value>
+  </data>
+  <data name="btnLogin.Content" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
+  <data name="btnLoginNext.Content" xml:space="preserve">
+    <value>Próximo</value>
+  </data>
+  <data name="btnRequestUser.Content" xml:space="preserve">
+    <value>Não tem uma conta?</value>
+  </data>
+  <data name="LoginHeader.Text" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
+  <data name="LoginPassHeader.Text" xml:space="preserve">
+    <value>Insira a senha</value>
+  </data>
+  <data name="PasswordPlaceHolder.PlaceholderText" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="tbcLoginError.Text" xml:space="preserve">
+    <value>Esta conta não existe. Insira uma conta diferente e tente novamente.</value>
+  </data>
+  <data name="tbcLoginPassError.Text" xml:space="preserve">
+    <value>Sua conta ou senha está incorreta.</value>
+  </data>
+  <data name="UserNamePlaceHolder.PlaceholderText" xml:space="preserve">
+    <value>Usuário, Email</value>
+  </data>
+  <data name="HomeLabel.Text" xml:space="preserve">
+    <value>Nenhum da selecionado</value>
+  </data>
+  <data name="Shell_UTG250.Content" xml:space="preserve">
+    <value>UTG250</value>
+  </data>
+  <data name="Shell_UM4000.Content" xml:space="preserve">
+    <value>UM4000</value>
+  </data>
+  <data name="btnClose.CloseButtonContent" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="btnOpen.Content" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
+  <data name="CalendarCheckBoxHeader.Content" xml:space="preserve">
+    <value>Filtro po Data</value>
+  </data>
+  <data name="CalendarHeaderFinal.Header" xml:space="preserve">
+    <value>Data Final</value>
+  </data>
+  <data name="CalendarHeaderInit.Header" xml:space="preserve">
+    <value>Data Inicial</value>
+  </data>
+  <data name="DataGridCounter.Text" xml:space="preserve">
+    <value>item(s) selecionado(s)</value>
+  </data>
+  <data name="DataGridCounterLabel" xml:space="preserve">
+    <value>item(s) selecionado(s)</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="FinalSN.Header" xml:space="preserve">
+    <value>Número de Série Final</value>
+  </data>
+  <data name="GeneralSearchPlaceHolder.PlaceHolderText" xml:space="preserve">
+    <value>Procurar (Ctrl+F)</value>
+  </data>
+  <data name="GeneralSearchPlaceHolder2.PlaceHolderText" xml:space="preserve">
+    <value>Didigite um</value>
+  </data>
+  <data name="InitSN.Header" xml:space="preserve">
+    <value>Número de Série Inicial</value>
+  </data>
+  <data name="MeterId" xml:space="preserve">
+    <value>Medidor ID: </value>
+  </data>
+  <data name="NotesHeader" xml:space="preserve">
+    <value>Notas</value>
+  </data>
+  <data name="RefreshButton.Content" xml:space="preserve">
+    <value>Atualizar Dados</value>
+  </data>
+  <data name="RefreshButtonStr" xml:space="preserve">
+    <value>Atualizar Dados</value>
+  </data>
+  <data name="ResultsHeader" xml:space="preserve">
+    <value>Resultados</value>
+  </data>
+  <data name="ResultsPreview.Title" xml:space="preserve">
+    <value>Prévia dos Resultados</value>
+  </data>
+  <data name="SelectionAll.Content" xml:space="preserve">
+    <value>Selecionar Tudo</value>
+  </data>
+  <data name="SNCheckBoxHeader.Content" xml:space="preserve">
+    <value>Filtro por Número de Série</value>
+  </data>
+  <data name="SNHeader0" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="SNHeader1" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="SNHeader2" xml:space="preserve">
+    <value>Número de Série</value>
+  </data>
+  <data name="SNHeader3" xml:space="preserve">
+    <value>Operador</value>
+  </data>
+  <data name="SNHeader4" xml:space="preserve">
+    <value>Programa</value>
+  </data>
+  <data name="SNHeader5" xml:space="preserve">
+    <value>Designação G</value>
+  </data>
+  <data name="SNHeader6" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="SNHeader7" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="TemplateSelectHeader.Header" xml:space="preserve">
+    <value>Protocolo</value>
+  </data>
+  <data name="TgShwitchPreview.Header" xml:space="preserve">
+    <value>Exibir Prévia</value>
+  </data>
+  <data name="ToleranceHeader" xml:space="preserve">
+    <value>Tolerância</value>
+  </data>
+  <data name="WMEHeader" xml:space="preserve">
+    <value>EMP:</value>
+  </data>
+  <data name="UTHeader0" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="UTHeader1" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="UTHeader10" xml:space="preserve">
+    <value>P max</value>
+  </data>
+  <data name="UTHeader11" xml:space="preserve">
+    <value>Leitura Inicial</value>
+  </data>
+  <data name="UTHeader12" xml:space="preserve">
+    <value>Leitura Final</value>
+  </data>
+  <data name="UTHeader13" xml:space="preserve">
+    <value>Emissor</value>
+  </data>
+  <data name="UTHeader14" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="UTHeader2" xml:space="preserve">
+    <value>Número de Série</value>
+  </data>
+  <data name="UTHeader3" xml:space="preserve">
+    <value>Operador</value>
+  </data>
+  <data name="UTHeader4" xml:space="preserve">
+    <value>Progama</value>
+  </data>
+  <data name="UTHeader5" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="UTHeader6" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="UTHeader7" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="UTHeader8" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="UTHeader9" xml:space="preserve">
+    <value>DN</value>
+  </data>
+  <data name="KHeader" xml:space="preserve">
+    <value>K (pulso/m³)</value>
+  </data>
+  <data name="Loading.Text" xml:space="preserve">
+    <value>Carregando</value>
+  </data>
+  <data name="DialogCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ErrorDB" xml:space="preserve">
+    <value>Unable to connect to database, please try again. If you are using a wireless connection, try connecting to a wired one.</value>
+  </data>
+  <data name="UMHeader0" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="UMHeader1" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="UMHeader10" xml:space="preserve">
+    <value>Leitura Final</value>
+  </data>
+  <data name="UMHeader11" xml:space="preserve">
+    <value>Qmax</value>
+  </data>
+  <data name="UMHeader12" xml:space="preserve">
+    <value>Qmin</value>
+  </data>
+  <data name="UMHeader13" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="UMHeader2" xml:space="preserve">
+    <value>Número de Série</value>
+  </data>
+  <data name="UMHeader3" xml:space="preserve">
+    <value>Operador</value>
+  </data>
+  <data name="UMHeader4" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="UMHeader5" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="UMHeader6" xml:space="preserve">
+    <value>DN</value>
+  </data>
+  <data name="UMHeader7" xml:space="preserve">
+    <value>Designação G</value>
+  </data>
+  <data name="UMHeader8" xml:space="preserve">
+    <value>P max</value>
+  </data>
+  <data name="UMHeader9" xml:space="preserve">
+    <value>Leitura Inicial</value>
+  </data>
+  <data name="Shell_Schedule.Content" xml:space="preserve">
+    <value>Programação</value>
+  </data>
+  <data name="Shell_FieldServices.Content" xml:space="preserve">
+    <value>Serviços de Campo</value>
+  </data>
+  <data name="Shell_Inventory.Content" xml:space="preserve">
+    <value>Estoque</value>
+  </data>
+  <data name="CredentialsSaveHeader.Content" xml:space="preserve">
+    <value>Salvar minhas credenciais?</value>
+  </data>
+  <data name="ConfigToolTip.Text" xml:space="preserve">
+    <value>Configurações da Página</value>
+  </data>
+  <data name="ExportButton.Text" xml:space="preserve">
+    <value>Exportar</value>
+  </data>
+  <data name="ExportButtonNormal" xml:space="preserve">
+    <value>Exportar</value>
+  </data>
+  <data name="ExportButtonSelected" xml:space="preserve">
+    <value>Item(ns) Selecionados</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Programação</value>
+  </data>
+  <data name="ScheduleColumn0" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ScheduleColumn1" xml:space="preserve">
+    <value>Instalação</value>
+  </data>
+  <data name="ScheduleColumn10" xml:space="preserve">
+    <value>Chave</value>
+  </data>
+  <data name="ScheduleColumn11" xml:space="preserve">
+    <value>Cidade</value>
+  </data>
+  <data name="ScheduleColumn12" xml:space="preserve">
+    <value>Bairro</value>
+  </data>
+  <data name="ScheduleColumn13" xml:space="preserve">
+    <value>Rua</value>
+  </data>
+  <data name="ScheduleColumn14" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="ScheduleColumn15" xml:space="preserve">
+    <value>Preço</value>
+  </data>
+  <data name="ScheduleColumn16" xml:space="preserve">
+    <value>Notas</value>
+  </data>
+  <data name="ScheduleColumn17" xml:space="preserve">
+    <value>Parada no Fornecimento</value>
+  </data>
+  <data name="ScheduleColumn18" xml:space="preserve">
+    <value>Emergencial</value>
+  </data>
+  <data name="ScheduleColumn19" xml:space="preserve">
+    <value>Vencimento</value>
+  </data>
+  <data name="ScheduleColumn2" xml:space="preserve">
+    <value>Equipe</value>
+  </data>
+  <data name="ScheduleColumn3" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="ScheduleColumn4" xml:space="preserve">
+    <value>Medidor</value>
+  </data>
+  <data name="ScheduleColumn5" xml:space="preserve">
+    <value>Nº Medidor</value>
+  </data>
+  <data name="ScheduleColumn6" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="ScheduleColumn7" xml:space="preserve">
+    <value>Classificação</value>
+  </data>
+  <data name="ScheduleColumn8" xml:space="preserve">
+    <value>Conv. Vol.</value>
+  </data>
+  <data name="ScheduleColumn9" xml:space="preserve">
+    <value>Nº Conv. Vol.</value>
+  </data>
+  <data name="EnglishLanguage" xml:space="preserve">
+    <value>Inglês</value>
+  </data>
+  <data name="InfoBarSettingfLanguageMessage" xml:space="preserve">
+    <value>Idioma de exibição alterado para {0}, reinicie o aplicativo para que as mudanças surtam efeito.</value>
+  </data>
+  <data name="PortugueseLanguage" xml:space="preserve">
+    <value>Português (Brasil)</value>
+  </data>
+</root>

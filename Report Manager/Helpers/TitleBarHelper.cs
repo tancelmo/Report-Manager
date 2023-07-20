@@ -1,9 +1,11 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
-
+using Report_Manager.Common;
+using Report_Manager.Views;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 
@@ -24,8 +26,121 @@ internal class TitleBarHelper
     [DllImport("user32.dll", CharSet = CharSet.Auto)]
     private static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
 
+    public static bool SetTitleBarColors(Microsoft.UI.Windowing.AppWindow m_AppWindow)
+    {
+        //Check to see if customization is supported.
+       // Currently only supported on Windows 11.
+        if (Microsoft.UI.Windowing.AppWindowTitleBar.IsCustomizationSupported())
+        {
+
+            var titleBar = m_AppWindow.TitleBar;
+            ConfigFile configFile = new ConfigFile(Globals.ConfigFilePath);
+            // Set active window colors
+            if (configFile.Read("Theme", "General") == "Light" || configFile.Read("Theme", "General") != "Dark")
+            {
+
+                titleBar.ForegroundColor = Colors.Black;
+                titleBar.BackgroundColor = Colors.Transparent;
+                titleBar.ButtonForegroundColor = Colors.Black;
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonHoverForegroundColor = Colors.Black;
+                titleBar.ButtonPressedForegroundColor = Colors.Black;
+                titleBar.ButtonHoverBackgroundColor = CommunityToolkit.WinUI.Helpers.ColorHelper.ToColor("#EDEDED");
+                titleBar.ButtonPressedBackgroundColor = CommunityToolkit.WinUI.Helpers.ColorHelper.ToColor("#E9E9E9");
+            }
+            else
+            {
+                titleBar.ForegroundColor = Colors.White;
+                titleBar.BackgroundColor = Colors.Transparent;
+                titleBar.ButtonForegroundColor = Colors.White;
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonHoverForegroundColor = Colors.White;
+                titleBar.ButtonPressedForegroundColor = Colors.White;
+                titleBar.ButtonHoverBackgroundColor = CommunityToolkit.WinUI.Helpers.ColorHelper.ToColor("#383838");
+                titleBar.ButtonPressedBackgroundColor = CommunityToolkit.WinUI.Helpers.ColorHelper.ToColor("#3D3D3D");
+
+            }
+
+            //titleBar.ButtonHoverForegroundColor = Colors.Gainsboro;
+            //titleBar.ButtonHoverBackgroundColor = Colors.DarkSeaGreen;
+            //titleBar.ButtonPressedForegroundColor = Colors.Gray;
+            //titleBar.ButtonPressedBackgroundColor = Colors.LightGreen;
+
+            // Set inactive window colors
+            titleBar.InactiveForegroundColor = Colors.Gray;
+            titleBar.InactiveBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveForegroundColor = Colors.Gray;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            return true;
+        }
+        return false;
+    }
     public static void UpdateTitleBar(ElementTheme theme)
     {
+        Debug.WriteLine(theme + "-" + App.Current.RequestedTheme.ToString());
+        ConfigFile _configFile = new ConfigFile(Globals.ConfigFilePath);
+        _configFile.Write("Theme", theme.ToString(), "General");
+
+
+        if (Microsoft.UI.Windowing.AppWindowTitleBar.IsCustomizationSupported())
+        {
+
+            var titleBar = ShellPage.m_AppWindow.TitleBar;
+            ConfigFile configFile = new ConfigFile(Globals.ConfigFilePath);
+            // Set active window colors
+            switch (theme.ToString())
+            {
+                case "Light":
+                    LightTheme();
+                    break;
+
+                case "Dark":
+                    DarkTheme();
+                    break;
+
+                default:
+                    if (App.Current.RequestedTheme.ToString() == "Light")
+                    {
+                        LightTheme();
+                    }
+                    else
+                    {
+                        DarkTheme();
+                    }
+                    break;
+            }
+
+            void LightTheme()
+            {
+                titleBar.ForegroundColor = Colors.Black;
+                titleBar.BackgroundColor = Colors.Transparent;
+                titleBar.ButtonForegroundColor = Colors.Black;
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonHoverForegroundColor = Colors.Black;
+                titleBar.ButtonPressedForegroundColor = Colors.Black;
+                titleBar.ButtonHoverBackgroundColor = CommunityToolkit.WinUI.Helpers.ColorHelper.ToColor("#EDEDED");
+                titleBar.ButtonPressedBackgroundColor = CommunityToolkit.WinUI.Helpers.ColorHelper.ToColor("#E9E9E9");
+            }
+            void DarkTheme()
+            {
+                titleBar.ForegroundColor = Colors.White;
+                titleBar.BackgroundColor = Colors.Transparent;
+                titleBar.ButtonForegroundColor = Colors.White;
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonHoverForegroundColor = Colors.White;
+                titleBar.ButtonPressedForegroundColor = Colors.White;
+                titleBar.ButtonHoverBackgroundColor = CommunityToolkit.WinUI.Helpers.ColorHelper.ToColor("#383838");
+                titleBar.ButtonPressedBackgroundColor = CommunityToolkit.WinUI.Helpers.ColorHelper.ToColor("#3D3D3D");
+
+            }
+
+            // Set inactive window colors
+            titleBar.InactiveForegroundColor = Colors.Gray;
+            titleBar.InactiveBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveForegroundColor = Colors.Gray;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+
+        }
         if (App.MainWindow.ExtendsContentIntoTitleBar)
         {
             if (theme == ElementTheme.Default)

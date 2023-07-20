@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Report_Manager.Views.Field_Services.StatusReport.Schedule.SchedulePageSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Report_Manager.Views.Field_Services.StatusReport.Schedule"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
+
+    <Grid  Margin="0" >
+        <Button x:Name="btnRefresh" ToolTipService.ToolTip="Refresh" FontFamily="Segoe MDL2 Assets" FontSize="15" Canvas.ZIndex="0" Content="&#xe72c;" HorizontalAlignment="Right" Width="40" Height="40" Background="Transparent" BorderThickness="0" VerticalAlignment="Top"/>
+
+        <NavigationView x:Name="NavView"
+                        Canvas.ZIndex="1"
+                                x:FieldModifier="public"
+                                IsPaneToggleButtonVisible="True"
+                                PaneDisplayMode="Left"
+                                Margin="0"
+                                Background="{ThemeResource TeachingTipTransientBackground}"
+                                OpenPaneLength="200"
+                                IsBackButtonVisible="Collapsed"
+                        
+                                IsSettingsVisible="False"
+                                VerticalAlignment="Top"
+                                AlwaysShowHeader="False"
+                                Opacity="1">
+
+            <NavigationView.MenuItems>
+                <NavigationViewItem Margin="0" Tag="page1" Content="Geral" >
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC4E;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="page2" Content="Personalizacao">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE790;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Icon="Calendar" Tag="page3" x:Uid="Shell_AVG" />
+                <NavigationViewItem Icon="ContactInfo" Tag="schedule1" x:Uid="Shell_CostumerList" />
+                <NavigationViewItem Icon="ContactInfo" Tag="schedule4" x:Uid="Shell_EventList" />
+                <NavigationViewItem Icon="ContactInfo" Tag="schedule1" x:Uid="Shell_CostumerList" />
+                <NavigationViewItem Icon="ContactInfo" Tag="schedule4" x:Uid="Shell_EventList" />
+                <NavigationViewItem Icon="ContactInfo" Tag="schedule1" x:Uid="Shell_CostumerList" />
+
+
+            </NavigationView.MenuItems>
+            <Frame x:Name="contentFrame">
+            </Frame>
+        </NavigationView>
+    </Grid>
+</Page>

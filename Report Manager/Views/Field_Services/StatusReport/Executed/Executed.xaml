@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Report_Manager.Views.Field_Services.StatusReport.Executed.Executed"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Report_Manager.Views.Field_Services.StatusReport.Executed"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dataGrid="using:Syncfusion.UI.Xaml.DataGrid"
+    xmlns:local2="using:Report_Manager.Data"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
+        <local2:CurrencyFormatConverter x:Key="currencyFormatConverter" />
+        <local2:ScheduleData x:Key="COMBO"/>
+        <Style TargetType="dataGrid:GroupDropArea" x:Name="borderBrushGroupDropArea">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+        <Style TargetType="dataGrid:GridFilterControl" x:Name="test2">
+
+            <Setter Property="FilterPopupWidth" Value="400" />
+        </Style>
+
+        <Style TargetType="dataGrid:AdvancedFilterControl" x:Name="test">
+
+            <Setter Property="Width" Value="400" />
+        </Style>
+
+        <Storyboard x:Name="storyBoardGrid" x:FieldModifier="public">
+            <DoubleAnimation
+        Storyboard.TargetName="pageGrid"
+        Storyboard.TargetProperty="Opacity"
+        From="0" To="1" Duration="0:0:.5"/>
+        </Storyboard>
+
+
+    </Page.Resources>
+
+    <Grid>
+        <dataGrid:SfDataGrid
+                ItemsSource="{x:Bind Orders, Mode=TwoWay}"
+                FrozenColumnsCount="4"
+                x:FieldModifier="public"
+                ScrollViewer.HorizontalScrollMode="Auto"
+                AllowDraggingColumns="True"
+                AllowFiltering="True"
+                x:Name="dataGrid"
+                RowHeight="42"
+                AutoGenerateColumns="False"
+                ShowColumnWhenGrouped="True"
+                HeaderLinesVisibility="Horizontal"
+                AllowGrouping="True"
+                AutoExpandGroups="True"
+                IsGroupDropAreaExpanded="True"
+                ShowGroupDropArea="True"
+                Opacity="1"
+                AllowResizingColumns="True"
+                Margin="0 0 0 10"
+                VerticalAlignment="Stretch" 
+                HorizontalAlignment="Stretch"
+                Background="{ThemeResource ControlAltFillColorTransparent}"
+                CellStyleSelector="{StaticResource rowStyleSelector}"
+                GridLinesVisibility="Horizontal"
+                GroupDropAreaStyle="{StaticResource borderBrushGroupDropArea}"
+                ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                ColumnWidthMode="Auto"                
+                HeaderRowHeight="40"
+                SelectionUnit="Row"
+                BorderBrush="Transparent"
+                
+                SelectionMode="Extended">
+            <dataGrid:SfDataGrid.GroupColumnDescriptions>
+                <dataGrid:GroupColumnDescription ColumnName="Date" />
+            </dataGrid:SfDataGrid.GroupColumnDescriptions>
+
+            <dataGrid:SfDataGrid.Columns>
+                <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="150" HeaderText="Status" TextAlignment="Center" MappingName="Status" ValueBinding="{Binding Status}"/>
+                <dataGrid:GridTextColumn  MappingName="Installation" ValueBinding="{Binding Installation}" />
+                <dataGrid:GridTextColumn  MappingName="Invoice" ValueBinding="{Binding Invoice}"/>
+                <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="300" MappingName="Costumer" ValueBinding="{Binding Costumer}"/>
+                <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="300" MappingName="Meter" ValueBinding="{Binding Meter}"/>
+                <dataGrid:GridTextColumn  MappingName="MeterSerialNumber" ValueBinding="{Binding MeterSerialNumber}"/>
+                <dataGrid:GridTextColumn  MappingName="MeterType" ValueBinding="{Binding MeterType}"/>
+                <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="300" MappingName="Classification" ValueBinding="{Binding Classification}"/>
+                <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="300"  MappingName="PTZ" ValueBinding="{Binding PTZ}"/>
+                <dataGrid:GridTextColumn  MappingName="PTZSerialNumber" ValueBinding="{Binding PTZSerialNumber}"/>
+                <dataGrid:GridTextColumn  MappingName="Key" ValueBinding="{Binding Key}"/>
+                <dataGrid:GridTextColumn  TextWrapping="NoWrap" MappingName="City" ValueBinding="{Binding City}"/>
+                <dataGrid:GridTextColumn  MappingName="District" ValueBinding="{Binding District}"/>
+                <dataGrid:GridTextColumn  MappingName="Street" ValueBinding="{Binding Street}"/>
+                <dataGrid:GridDateColumn  MappingName="Date" DisplayDateFormat="D" GroupMode="Value" ValueBinding="{Binding Date}"/>
+                <dataGrid:GridTextColumn  MappingName="Price" ValueBinding="{Binding Price, Converter={StaticResource currencyFormatConverter}}"/>
+                <dataGrid:GridTextColumn  MappingName="Notes" Width="300" TextWrapping="NoWrap" ValueBinding="{Binding Notes}"/>
+                <dataGrid:GridCheckBoxColumn  MappingName="Bypass" ValueBinding="{Binding Bypass}"/>
+                <dataGrid:GridCheckBoxColumn  MappingName="Emergency" Width="150" ValueBinding="{Binding Emergency}"/>
+                <dataGrid:GridDateColumn  MappingName="ExpirationDate" DisplayDateFormat="D" GroupMode="Value" ValueBinding="{Binding ExpirationDate}"/>
+
+            </dataGrid:SfDataGrid.Columns>
+        </dataGrid:SfDataGrid>
+    </Grid>
+</Page>

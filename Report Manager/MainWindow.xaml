@@ -10,7 +10,10 @@
     MinHeight="500"
     PersistenceId="MainWindow"
     mc:Ignorable="d">
-    <Window.SystemBackdrop>
+    <!--<Window.SystemBackdrop>
         <MicaBackdrop/>
-    </Window.SystemBackdrop>
+    </Window.SystemBackdrop>-->
+    <windowex:WindowEx.Backdrop>
+        <windowex:MicaSystemBackdrop/>
+    </windowex:WindowEx.Backdrop>
 </windowex:WindowEx>

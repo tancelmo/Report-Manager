@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<windowex:WindowEx
+    xmlns:windowex="using:WinUIEx"
+    x:Class="Report_Manager.MapView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Report_Manager"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <windowex:WindowEx.Backdrop>
+        <windowex:MicaSystemBackdrop/>
+    </windowex:WindowEx.Backdrop>
+
+
+    <Grid x:Name="contentGrid" Margin="0 0 0 0" >
+        <Grid.Resources>
+            <Storyboard x:Name="storyBoardGrid" x:FieldModifier="public">
+                <DoubleAnimation
+                Storyboard.TargetName="mapGrid"
+                Storyboard.TargetProperty="Opacity"
+                From="0" To="1" Duration="0:0:.5"/>
+            </Storyboard>
+        </Grid.Resources>
+        <ProgressRing x:Name="DataGridRing" x:FieldModifier="public" IsActive="True" Visibility="Visible" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Loadinglbl" x:FieldModifier="public" x:Uid="Loading" Margin="0 100 0 0" HorizontalAlignment="Center" FontSize="19" VerticalAlignment="Center" Foreground="{ThemeResource AccentAAFillColorDefaultBrush}"/>
+
+        <Grid x:Name="AppTitleBarW10" 
+              Background="Transparent"
+              Height="40"  
+              VerticalAlignment="Top">
+
+            <TextBlock x:Name="AppTitleTextBlock" Text="Report Manager"
+                   Padding="0"
+                   FontFamily="Assests/#Ubuntu"
+                   TextWrapping="NoWrap"
+                   FontStretch="Expanded"
+                   Foreground="{StaticResource ApplicationForegroundThemeBrush}"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="10,6,0,0"
+                   />
+
+        </Grid>
+        <Grid x:Name="AppTitleBar"  
+                Height="32" HorizontalAlignment="Center"  VerticalAlignment="Top"/>
+        <Grid x:Name="mapGrid" Opacity="0" Margin="0 32 0 0">
+        </Grid>
+
+    </Grid>
+</windowex:WindowEx>

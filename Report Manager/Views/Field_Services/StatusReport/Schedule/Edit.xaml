@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Report_Manager.Views.Field_Services.StatusReport.Schedule.Edit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Report_Manager.Views.Field_Services.StatusReport.Schedule"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Width="500">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="0 20 0 0">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="auto"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="lblInstallation" x:FieldModifier="public" Margin="0 5 0 0" HorizontalAlignment="Left" Grid.Column="0" />
+                    <TextBlock x:Name="lblCostumer" x:FieldModifier="public" Margin="0 5 0 0" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" />
+                    <TextBlock x:Name="lblCity" x:FieldModifier="public" Margin="0 5 0 0" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2" />
+                    <TextBlock x:Name="lblDistrict" x:FieldModifier="public" Margin="0 5 0 0" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" />
+                    <TextBlock x:Name="lblStreet" x:FieldModifier="public" Margin="0 5 0 0" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="4" />
+                    <TextBlock x:Name="lblClassification" x:FieldModifier="public" Margin="0 5 0 0" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="5" />
+                    <TextBlock x:Name="lblMeter" x:FieldModifier="public" Margin="0 5 0 0" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="6" />
+                    <TextBlock x:Name="lblMeterSn" x:FieldModifier="public" Margin="0 5 0 0" Grid.Column="0" Grid.Row="7" >
+                            <ToolTipService.ToolTip>
+                                <TextBlock x:Uid="MeterSN"/>
+                            </ToolTipService.ToolTip>
+                        </TextBlock>
+                    <TextBlock x:Name="lblType" x:FieldModifier="public" Grid.Column="1" HorizontalAlignment="Right" Margin="0 5 130 0" Grid.Row="7" />
+                    <TextBlock x:Name="lblVolConUnit" x:FieldModifier="public" Margin="0 5 0 0" Grid.Column="0" Grid.Row="8">
+                            <ToolTipService.ToolTip>
+                                <TextBlock x:Uid="VolConvUnitFull"/>
+                            </ToolTipService.ToolTip>
+                        </TextBlock>
+                    <TextBlock x:Name="lblVolConUnitSN" x:FieldModifier="public" Margin="0 5 5 0" Grid.Column="0" Grid.Row="9" >
+                            <ToolTipService.ToolTip>
+                                <TextBlock x:Uid="VolConvUnitFullSN"/>
+                            </ToolTipService.ToolTip>
+                        </TextBlock>
+                    <TextBlock x:Name="dateLbl" Text="Date" Margin="0 5 0 0" Grid.Column="0" Grid.Row="10"/>
+                    <TextBlock x:Name="lblNotes" x:FieldModifier="public" Margin="0 5 0 0" HorizontalAlignment="Left" Grid.Column="0" Text="Notes" Grid.Row="11"/>
+
+                    <!--COMBOBOX & TEXTBOX-->
+
+                    <ComboBox x:FieldModifier="public" x:Name="cbxStatus" Grid.Column="1" Height="33" Width="200" Margin="105 0 0 0" />
+                    <TextBox x:FieldModifier="public" Margin="0 0 0 5" x:Name="Installation" IsReadOnly="False" Width="100" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:FieldModifier="public" Margin="0 0 0 5" x:Name="Costumer" Width="390" IsReadOnly="False" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:FieldModifier="public" Margin="0 0 0 5" x:Name="City" IsReadOnly="False" Width="390" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:FieldModifier="public" Margin="0 0 0 5" x:Name="District" IsReadOnly="False" Width="390" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:FieldModifier="public" Margin="0 0 0 5" x:Name="Street" IsReadOnly="False" Width="390" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <ComboBox x:FieldModifier="public" Margin="0 0 0 5" x:Name="ClassificationTbx" Width="390" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:FieldModifier="public" Margin="0 0 0 5" x:Name="Meter" Width="390" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:FieldModifier="public" Margin="0 0 0 5" x:Name="meterSerialNumber" Grid.Column="1" Grid.Row="7" Width="170" IsReadOnly="False" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Uid="MeterSN"/>
+                        </ToolTipService.ToolTip>
+                    </TextBox>
+                    <ComboBox x:FieldModifier="public" Margin="0 0 0 5" x:Name="meterSerialType" Grid.Column="1" Grid.Row="7" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                    <TextBox x:FieldModifier="public" Margin="0 0 0 5" x:Name="PTZ" Grid.Column="1" Grid.Row="8" Width="300" IsReadOnly="False" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Uid="VolConvUnitFull"/>
+                        </ToolTipService.ToolTip>
+                    </TextBox>
+                    <TextBox x:FieldModifier="public" x:Name="PTZSN" Margin="0 0 0 5" Grid.Column="1" IsReadOnly="False" Grid.Row="9" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Uid="VolConvUnitFullSN"/>
+                        </ToolTipService.ToolTip>
+                    </TextBox>
+                    <CalendarDatePicker x:FieldModifier="public" IsEnabled="True" Width="120" x:Name="datePicker" DateChanged="datePicker_DateChanged" Margin="0 0 0 5" Grid.Column="1" Grid.Row="10"/>
+                    <CheckBox x:FieldModifier="public" Grid.ColumnSpan="3" x:Name="GasSupplyStop" Content="Gas Supply Stop" HorizontalAlignment="Left" Margin="130 0 0 0" Grid.Column="1" Grid.Row="9" />
+                    <CheckBox x:FieldModifier="public" x:Name="Emergency" Grid.ColumnSpan="3" Content="Emergency" Grid.Column="1" HorizontalAlignment="Left" Margin="130 0 0 0" Grid.Row="10" />
+                    <TextBox x:FieldModifier="public" AcceptsReturn="True" IsSpellCheckEnabled="True" x:Name="tbxNotes" MaxHeight="100" MaxWidth="390" Grid.Column="1" Grid.Row="11" TextWrapping="Wrap" />
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
