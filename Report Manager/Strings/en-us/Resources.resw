@@ -693,4 +693,7 @@
   <data name="Shell_StatusReport.Content" xml:space="preserve">
     <value>Status Report</value>
   </data>
+  <data name="btnNew.Content" xml:space="preserve">
+    <value>New</value>
+  </data>
 </root>
