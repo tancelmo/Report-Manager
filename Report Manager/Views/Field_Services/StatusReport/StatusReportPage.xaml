@@ -10,19 +10,14 @@
     <Page.Resources>
         <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent"/>
 
-        <Storyboard x:Name="storyBoardKeyNotes" x:FieldModifier="public">
-
-            <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True"
-                                           Storyboard.TargetProperty="(FrameworkElement.Width)" 
-                                           Storyboard.TargetName="borderNotes">
-                <EasingDoubleKeyFrame KeyTime="0:0:.1" Value="300"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True"
-                                           Storyboard.TargetProperty="(FrameworkElement.Height)" 
-                                           Storyboard.TargetName="borderNotes">
-                <EasingDoubleKeyFrame KeyTime="0:0:.1" Value="80"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
+        <TeachingTip x:Name="NotesTeachingTip"
+                     x:FieldModifier="public"
+                     PreferredPlacement="RightTop"
+                     PlacementMargin="20">       
+            <TeachingTip.Content>
+                <TextBlock x:Name="NotesTeachingTipText" x:FieldModifier="public" IsTextSelectionEnabled="True"/>
+            </TeachingTip.Content>
+        </TeachingTip>
     </Page.Resources>
     <Grid x:Name="ContentArea">
         <NavigationView x:Name="NavView"
@@ -76,16 +71,5 @@
 
         <Button x:Name="btnRefresh" Click="btnRefresh_Click" ToolTipService.ToolTip="Refresh" FontFamily="Segoe MDL2 Assets" FontSize="15" Content="&#xe72c;" HorizontalAlignment="Right" Margin="0 0 40 0" Width="40" Height="40" Background="Transparent" BorderThickness="0" VerticalAlignment="Top"/>
         <Button x:Name="btnMapView" Click="btnMapView_Click" ToolTipService.ToolTip="Map View" FontFamily="Segoe MDL2 Assets" FontSize="15" Content="&#xE707;" HorizontalAlignment="Right" Margin="0 0 80 0" Width="40" Height="40" Background="Transparent" BorderThickness="0" VerticalAlignment="Top"/>
-        <Border x:Name="borderNotes" Visibility="Collapsed" x:FieldModifier="public" Translation="0,0,15" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}" BorderThickness="1" Margin="0 -85 " Width="0" Height="0" HorizontalAlignment="Right" VerticalAlignment="Top" CornerRadius="5">
-            <Border.Background>
-                <SolidColorBrush Color="{ThemeResource TeachingTipTransientBackground}" Opacity="1"/>
-            </Border.Background>
-            <Border.Shadow>
-                <ThemeShadow />
-            </Border.Shadow>
-            <ScrollViewer>
-                <TextBlock x:FieldModifier="public" IsTextSelectionEnabled="True" Margin="5 0" x:Name="scheduleCardNotes" Width="290" Height="auto" TextWrapping="Wrap"/>
-            </ScrollViewer>
-        </Border>
     </Grid>
 </Page>

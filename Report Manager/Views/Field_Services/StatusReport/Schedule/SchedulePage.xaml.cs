@@ -485,15 +485,13 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                 datePickerSch.Date = myData.Date;
                 if (myData.Notes != "" && StatusReportPage.statusReportCurrent != null)
                 {
-                    StatusReportPage.statusReportCurrent.storyBoardKeyNotes.Begin();
-                    StatusReportPage.statusReportCurrent.scheduleCardNotes.Text = myData.Notes;
-                    StatusReportPage.statusReportCurrent.borderNotes.Visibility = Visibility.Visible;
+                    StatusReportPage.statusReportCurrent.NotesTeachingTip.IsOpen = true;
+                    StatusReportPage.statusReportCurrent.NotesTeachingTip.Title = "Notes";
+                    StatusReportPage.statusReportCurrent.NotesTeachingTipText.Text = myData.Notes;
                 }
                 else
                 {
-                    StatusReportPage.statusReportCurrent.borderNotes.Visibility = Visibility.Collapsed;
-                    StatusReportPage.statusReportCurrent.borderNotes.Width = 0;
-                    StatusReportPage.statusReportCurrent.borderNotes.Height = 0;
+                    StatusReportPage.statusReportCurrent.NotesTeachingTip.IsOpen = false;
                 }
 
                 datePickerSch.IsEnabled = true;

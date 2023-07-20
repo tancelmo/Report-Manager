@@ -97,8 +97,6 @@ internal class SearchBox
                     return true;
             }
 
-            Debug.WriteLine(ShellPage.CurrentMain.GeneralSearchFilter.SelectedItem);
-            Debug.WriteLine("ScheduleColumn1".GetLocalized());
         }
         return false;
     }
@@ -243,7 +241,6 @@ internal class SearchBox
 
                 else if (ItemContent.Tag.ToString() == "Status_Report")
                 {
-                    Debug.WriteLine("layer StatusReport");
 
                     //NavView2 from StatusReprot
 
