@@ -50,7 +50,7 @@ public sealed partial class Login : WindowEx
             var titleBar = m_AppWindow.TitleBar;
             titleBar.ExtendsContentIntoTitleBar = true;
 
-            SetTitleBarColors();
+            //SetTitleBarColors();
             //window_main.Background = null;
             // Set active window colors
             titleBar.ButtonBackgroundColor = Colors.Transparent;
