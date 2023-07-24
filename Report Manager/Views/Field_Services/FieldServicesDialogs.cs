@@ -151,5 +151,32 @@ namespace Report_Manager.Views.Field_Services
             }
             
         }
+        public static async void ScheduleNew(Page page)
+        {
+            ContentDialog dialog = new ContentDialog();
+
+            // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+
+            dialog.XamlRoot = page.XamlRoot;
+
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.Title = "EditServiceTitle".GetLocalized();
+            dialog.PrimaryButtonText = "ApplyBtn".GetLocalized();
+            dialog.CloseButtonText = "CloseBtn".GetLocalized();
+            dialog.DefaultButton = ContentDialogButton.Primary;
+
+            dialog.Content = new NewScheduleItem();
+            //dialog.MaxWidth = ShellPage.CurrentMain.ActualWidth * .8;
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                MessageDialog.Show(page, "TODO - ADD NEW PAGE FOR SCHEDULE NEW FACILITIES");
+            }
+            else
+            {
+                Debug.WriteLine("ESC Cancel or back button in ExecuteAction");
+            }
+        }
     }
 }

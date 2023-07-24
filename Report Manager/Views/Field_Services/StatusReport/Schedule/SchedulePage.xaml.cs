@@ -718,4 +718,9 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                 ((NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
         }
     }
+
+    private void BtnNew_Click(object sender, RoutedEventArgs e)
+    {
+        FieldServicesDialogs.ScheduleNew(this);
+    }
 }

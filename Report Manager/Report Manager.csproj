@@ -20,6 +20,7 @@
     <None Remove="Views\Field_Services\StatusReport\Executed\Executed.xaml" />
     <None Remove="Views\Field_Services\StatusReport\Schedule\Edit.xaml" />
     <None Remove="Views\Field_Services\StatusReport\Schedule\ExecuteAction.xaml" />
+    <None Remove="Views\Field_Services\StatusReport\Schedule\NewScheduleItem.xaml" />
     <None Remove="Views\Field_Services\StatusReport\Schedule\SchedulePageSettings.xaml" />
     <None Remove="Views\Field_Services\StatusReport\Schedule\SettingsViews\SettingsPage1.xaml" />
     <None Remove="Views\Field_Services\StatusReport\Schedule\SettingsViews\SettingsPage2.xaml" />
@@ -55,6 +56,9 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\Field_Services\StatusReport\Schedule\NewScheduleItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Field_Services\StatusReport\Schedule\ExecuteAction.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

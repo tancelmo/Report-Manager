@@ -163,7 +163,7 @@
                     <ToggleButton Width="140" x:FieldModifier="public" x:Name="showPreview" Content="Show Preview" Grid.Column="4" HorizontalAlignment="Right" Grid.Row="3" Margin="10 0 0 0"/>
                     <CheckBox x:FieldModifier="public" x:Name="GasSupplyStop" Content="Gas Supply Stop" Grid.Column="5" Grid.Row="2" IsEnabled="False" Margin="10 0 0 0"/>
                     <CheckBox x:FieldModifier="public" x:Name="Emergency" Content="Emergency" Grid.Column="5" Grid.Row="3" IsEnabled="False" Margin="10 0 0 0"/>
-                    <Button x:Name="BtnNew" x:Uid="btnNew" HorizontalAlignment="Left" Width="62" Height="31" Margin="10 -5 0 0" Grid.Column="5" Grid.Row="0" Style="{ThemeResource AccentButtonStyle}"/>
+                    <Button x:Name="BtnNew" x:Uid="btnNew" Click="BtnNew_Click" HorizontalAlignment="Left" Width="62" Height="31" Margin="10 -5 0 0" Grid.Column="5" Grid.Row="0" Style="{ThemeResource AccentButtonStyle}"/>
                     <Button x:Name="BtnEdit" x:Uid="btnEdit" Click="BtnEdit_Click" HorizontalAlignment="Left" Width="62" Margin="78 -5 0 0" Grid.Column="5" Grid.Row="0"/>
                     <Button x:FieldModifier="public" x:Name="excelExp" Click="excelExp_Click" Grid.Column="5" HorizontalAlignment="Left" Width="130" VerticalAlignment="Top" Grid.Row="1" Grid.RowSpan="3" Margin="10 0 0 0" Height="32" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                         <Button.Content>
