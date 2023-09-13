@@ -71,5 +71,11 @@
 
         <Button x:Name="btnRefresh" Click="btnRefresh_Click" ToolTipService.ToolTip="Refresh" FontFamily="Segoe MDL2 Assets" FontSize="15" Content="&#xe72c;" HorizontalAlignment="Right" Margin="0 0 40 0" Width="40" Height="40" Background="Transparent" BorderThickness="0" VerticalAlignment="Top"/>
         <Button x:Name="btnMapView" Click="btnMapView_Click" ToolTipService.ToolTip="Map View" FontFamily="Segoe MDL2 Assets" FontSize="15" Content="&#xE707;" HorizontalAlignment="Right" Margin="0 0 80 0" Width="40" Height="40" Background="Transparent" BorderThickness="0" VerticalAlignment="Top"/>
+        <Button x:Name="btnBorderView" Click="btnBorderView_Click" ToolTipService.ToolTip="Hide Border" FontSize="15" HorizontalAlignment="Right" Margin="0 -40 120 0" Width="40" Height="40" Background="Transparent" BorderThickness="0" VerticalAlignment="Top">
+            <Button.Content>
+                <FontIcon Glyph="&#xE7B3;"/>
+            </Button.Content>
+        </Button>
+
     </Grid>
 </Page>

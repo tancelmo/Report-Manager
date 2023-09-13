@@ -56,7 +56,7 @@ namespace Report_Manager.Views.Field_Services
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
 
             dialog.XamlRoot = page.XamlRoot;
-
+            
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.Title = "EditServiceTitle".GetLocalized();
             dialog.PrimaryButtonText = "ApplyBtn".GetLocalized();

@@ -483,7 +483,7 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                 lblDatefull.Text = Convert.ToDateTime(myData.Date).ToString("dddd").ToUpper();
                 lblDateshort.Text = Convert.ToDateTime(myData.Date).ToString("d");
                 datePickerSch.Date = myData.Date;
-                if (myData.Notes != "" && StatusReportPage.statusReportCurrent != null)
+                if (myData.Notes != "" && StatusReportPage.statusReportCurrent != null && Globals.ShowNotes)
                 {
                     StatusReportPage.statusReportCurrent.NotesTeachingTip.IsOpen = true;
                     StatusReportPage.statusReportCurrent.NotesTeachingTip.Title = "Notes";
@@ -510,7 +510,7 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                     storyBoardKey2.Begin();
                 }
 
-                if (showPreview.IsChecked == true)
+                if (Globals.ShowPreview)
                 {
                     if (ResultsPreview.IsOpen == false)
                     {
@@ -722,5 +722,42 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
     private void BtnNew_Click(object sender, RoutedEventArgs e)
     {
         FieldServicesDialogs.ScheduleNew(this);
+        
+    }
+
+    private void showPreview_Checked(object sender, RoutedEventArgs e)
+    {
+        Globals.ShowPreview = true;
+        configFile.Write("ShowPreview", "1", "General");
+    }
+
+    private void showPreview_Unchecked(object sender, RoutedEventArgs e)
+    {
+        Globals.ShowPreview = false;
+        configFile.Write("ShowPreview", "0", "General");
+    }
+
+    private void showEvent_Checked(object sender, RoutedEventArgs e)
+    {
+        Globals.ShowEvent = true;
+        configFile.Write("ShowEvent", "1", "General");
+    }
+
+    private void showEvent_Unchecked(object sender, RoutedEventArgs e)
+    {
+        Globals.ShowEvent = false;
+        configFile.Write("ShowEvent", "0", "General");
+    }
+
+    private void showNotes_Checked(object sender, RoutedEventArgs e)
+    {
+        Globals.ShowNotes = true;
+        configFile.Write("ShowNotes", "1", "General");
+    }
+
+    private void showNotes_Unchecked(object sender, RoutedEventArgs e)
+    {
+        Globals.ShowNotes = false;
+        configFile.Write("ShowNotes", "0", "General");
     }
 }

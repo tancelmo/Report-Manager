@@ -79,4 +79,10 @@ internal class Globals
     public static int FronzenColumns3;
 
     public static int FronzenColumns4;
+
+    public static bool ShowPreview;
+
+    public static bool ShowNotes;
+
+    public static bool ShowEvent;
 }

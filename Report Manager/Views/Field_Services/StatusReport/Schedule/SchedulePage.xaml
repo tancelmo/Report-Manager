@@ -7,6 +7,7 @@
     xmlns:dataGrid="using:Syncfusion.UI.Xaml.DataGrid"
     xmlns:local="using:Report_Manager.Data"
     xmlns:globals="using:Report_Manager"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.Editors"
     Loaded="Page_Loaded"
     mc:Ignorable="d">
 
@@ -27,7 +28,14 @@
 
             <Setter Property="Width" Value="400" />
         </Style>
-
+        <!--<Storyboard x:Name="Storyboard1"
+                    x:FieldModifier="public">
+            <DoubleAnimation Storyboard.TargetName="BorderCard" Storyboard.TargetProperty="X" Duration="0:0:.5" From="0" To="200" >
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>-->
         <Storyboard x:Name="storyBoardGrid" x:FieldModifier="public">
             <DoubleAnimation
         Storyboard.TargetName="pageGrid"
@@ -60,7 +68,11 @@
         </Storyboard>
     </Page.Resources>
     <Grid x:Name="ContentArea" >
-        <Border VerticalAlignment="Top" Translation="0,0,15" Margin="0 10 0 0" CornerRadius="10" BorderThickness="1" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}">
+        
+        <Border x:Name="BorderCard" x:FieldModifier="public" VerticalAlignment="Top" Translation="0,0,15" Margin="0 10 0 0" CornerRadius="10" BorderThickness="1" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}">
+            <Border.TranslationTransition>
+                <Vector3Transition/>
+            </Border.TranslationTransition>
             <Border.Background>
                 <SolidColorBrush Color="{ThemeResource TeachingTipTransientBackground}" Opacity="1"/>
             </Border.Background>
@@ -119,6 +131,7 @@
                             <ThemeShadow />
                         </Border.Shadow>
                     </Border>
+                    
                     <TextBlock x:Name="lblInstallation" x:FieldModifier="public" HorizontalAlignment="Left" Grid.Column="1" Margin="10 5 0 0"/>
                     <TextBlock x:Name="lblCostumer" x:FieldModifier="public" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Margin="10 5 0 0"/>
                     <TextBlock x:Name="lblAdress" x:FieldModifier="public" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Margin="10 5 0 0"/>
@@ -160,7 +173,71 @@
                             <TextBlock x:Uid="VolConvUnitFullSN"/>
                         </ToolTipService.ToolTip>
                     </TextBox>
-                    <ToggleButton Width="140" x:FieldModifier="public" x:Name="showPreview" Content="Show Preview" Grid.Column="4" HorizontalAlignment="Right" Grid.Row="3" Margin="10 0 0 0"/>
+                    <!--<ToggleButton Width="140" x:FieldModifier="public" x:Name="showPreview" Content="Show Preview" Grid.Column="4" HorizontalAlignment="Right" Grid.Row="3" Margin="10 0 0 0"/>-->
+                    <Button Content="Options" x:Name="optionlocal" Grid.Column="4" Grid.Row="3" x:FieldModifier="public" HorizontalAlignment="Right" Margin="10 0 0 0">
+                        <Button.Flyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem Text="Open"/>
+                                <MenuFlyoutSubItem Text="Send to" >
+                                    <MenuFlyoutItem Text="Bluetooth" />
+                                    <MenuFlyoutItem Text="Desktop (shortcut)" />
+                                    <MenuFlyoutSubItem Text="Compressed file">
+                                        <MenuFlyoutItem Text="Compress and email" />
+                                        <MenuFlyoutItem Text="Compress to .7z" />
+                                        <MenuFlyoutItem Text="Compress to .zip" />
+                                    </MenuFlyoutSubItem>
+                                </MenuFlyoutSubItem>
+                                <MenuFlyoutItem Text="Share" Click="BtnNew_Click">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE72D;"/>
+                                    </MenuFlyoutItem.Icon>
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="S" Modifiers="Control" />
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem Text="Copy" Icon="Copy">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="C" Modifiers="Control"/>
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem Text="Delete" Icon="Delete">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="Delete" />
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutSeparator/>
+                                <MenuFlyoutItem Text="Rename"/>
+                                <MenuFlyoutItem Text="Select"/>
+                                <MenuFlyoutItem Text="EventText">
+                                    <MenuFlyoutItem.Template>
+                                        <ControlTemplate TargetType="MenuFlyoutItem">
+                                            <StackPanel Margin="15,0,15,5" Orientation="Horizontal">
+                                                <CheckBox x:Name="showEvent" IsChecked="{x:Bind globals:Globals.ShowEvent}" Checked="showEvent_Checked" Unchecked="showEvent_Unchecked" Content="Show Event Baloon"/>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </MenuFlyoutItem.Template>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem Text="NotesText">
+                                    <MenuFlyoutItem.Template>
+                                        <ControlTemplate TargetType="MenuFlyoutItem">
+                                            <StackPanel Margin="15,0,15,5" Orientation="Horizontal">
+                                                <CheckBox x:Name="showNotes" IsChecked="{x:Bind globals:Globals.ShowNotes}" Checked="showNotes_Checked" Unchecked="showNotes_Unchecked" Content="Show Notes Baloon"></CheckBox>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </MenuFlyoutItem.Template>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem Text="ShowPreviewText">
+                                    <MenuFlyoutItem.Template>
+                                        <ControlTemplate TargetType="MenuFlyoutItem">
+                                            <StackPanel Margin="15,0,15,5" Orientation="Horizontal">
+                                                <CheckBox x:Name="showPreview" IsChecked="{x:Bind globals:Globals.ShowPreview}" Checked="showPreview_Checked" Unchecked="showPreview_Unchecked" Content="Show Preview"></CheckBox>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </MenuFlyoutItem.Template>
+                                </MenuFlyoutItem>
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
                     <CheckBox x:FieldModifier="public" x:Name="GasSupplyStop" Content="Gas Supply Stop" Grid.Column="5" Grid.Row="2" IsEnabled="False" Margin="10 0 0 0"/>
                     <CheckBox x:FieldModifier="public" x:Name="Emergency" Content="Emergency" Grid.Column="5" Grid.Row="3" IsEnabled="False" Margin="10 0 0 0"/>
                     <Button x:Name="BtnNew" x:Uid="btnNew" Click="BtnNew_Click" HorizontalAlignment="Left" Width="62" Height="31" Margin="10 -5 0 0" Grid.Column="5" Grid.Row="0" Style="{ThemeResource AccentButtonStyle}"/>
@@ -177,10 +254,10 @@
                 </Grid>
             </ScrollViewer>
         </Border>
+        
         <TextBlock x:Name="counterLabel" x:FieldModifier="public" Text="" HorizontalAlignment="Right" VerticalAlignment="Top" IsTextSelectionEnabled="True" Margin="0 -40 130 0"/>
         <ProgressRing x:Name="DataGridRing" x:FieldModifier="public" IsActive="True" Visibility="Visible" Width="50" Height="50" Margin="0 300 0 0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock x:Name="Loadinglbl" x:FieldModifier="public" x:Uid="Loading" HorizontalAlignment="Center" FontSize="19" Margin="0 400 0 0" VerticalAlignment="Center" Foreground="{ThemeResource AccentAAFillColorDefaultBrush}"/>
-
         <Grid x:Name="pageGrid" Visibility="Collapsed" x:FieldModifier="public">
             <dataGrid:SfDataGrid
                 ItemsSource="{x:Bind Orders, Mode=TwoWay}"
@@ -218,6 +295,52 @@
                 <dataGrid:SfDataGrid.GroupColumnDescriptions>
                     <dataGrid:GroupColumnDescription ColumnName="Date" />
                 </dataGrid:SfDataGrid.GroupColumnDescriptions>
+                <dataGrid:SfDataGrid.RecordContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Open"/>
+                            <MenuFlyoutSubItem Text="Send to" >
+                                <MenuFlyoutItem Text="Bluetooth" />
+                                <MenuFlyoutItem Text="Desktop (shortcut)" />
+                                <MenuFlyoutSubItem Text="Compressed file">
+                                    <MenuFlyoutItem Text="Compress and email" />
+                                    <MenuFlyoutItem Text="Compress to .7z" />
+                                    <MenuFlyoutItem Text="Compress to .zip" />
+                                </MenuFlyoutSubItem>
+                            </MenuFlyoutSubItem>
+                        <MenuFlyoutItem Text="Share" Click="BtnNew_Click">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE72D;"/>
+                            </MenuFlyoutItem.Icon>
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="S" Modifiers="Control" />
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Text="Copy" Icon="Copy">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="C" Modifiers="Control"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Text="Delete" Icon="Delete">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="Delete" />
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator/>
+                        <MenuFlyoutItem Text="Rename"/>
+                        <MenuFlyoutItem Text="Select"/>
+                        <MenuFlyoutItem Text="Item 1">
+                            <MenuFlyoutItem.Template>
+                                <ControlTemplate TargetType="MenuFlyoutItem">
+                                    <StackPanel Margin="15,0,15,5" Orientation="Horizontal">
+                                        <CheckBox Content="Exibir Notas e Eventos"></CheckBox>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </MenuFlyoutItem.Template>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+
+                </dataGrid:SfDataGrid.RecordContextFlyout>
+                
                 <dataGrid:SfDataGrid.Columns>
                     <dataGrid:GridTextColumn TextWrapping="NoWrap" Width="180" HeaderText="Status" TextAlignment="Center" MappingName="Status" ValueBinding="{Binding Status}"/>
                     <dataGrid:GridTemplateColumn MappingName="Installation" FilterRowEditorType="TexBox" ImmediateUpdateColumnFilter="True" >
@@ -249,6 +372,9 @@
                             </DataTemplate>
                         </dataGrid:GridTemplateColumn.CellTemplate>
                     </dataGrid:GridTemplateColumn>
+                    
+                        
+                    
                     <!--<dataGrid:GridTextColumn  MappingName="Installation" FilterRowEditorType="TexBox" ImmediateUpdateColumnFilter="True" ValueBinding="{Binding Installation}" />-->
                     <dataGrid:GridTextColumn  MappingName="Team" ValueBinding="{Binding Team}"/>
                     <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="300" MappingName="Costumer" ValueBinding="{Binding Costumer}"/>
@@ -362,6 +488,7 @@
                         x:FieldModifier="public"
                         PreferredPlacement="Center"
                         PlacementMargin="10"
+                
                         IsLightDismissEnabled="True">
 
                 <TeachingTip.Content>

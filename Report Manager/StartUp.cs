@@ -35,6 +35,7 @@ BackDropStyle=
 AccentColor=#FF0078D4
 MarkUP=##
 ReportExtension=.xls
+ShowPreview=0
 
 [Connection]
 ServerAdress=
@@ -216,6 +217,31 @@ Status_010Background=");
         Globals.FronzenColumns3 = Convert.ToInt32(configFile.Read("FronzenColumns3", "ScheduleGrid"));
         Globals.FronzenColumns4 = Convert.ToInt32(configFile.Read("FronzenColumns4", "ScheduleGrid"));
 
+        //Show Preview
+        if(configFile.Read("ShowPreview", "General") == "1")
+        {
+            Globals.ShowPreview = true;
+        }
+        else
+        {
+            Globals.ShowPreview = false;
+        }
+        if (configFile.Read("ShowNotes", "General") == "1")
+        {
+            Globals.ShowNotes = true;
+        }
+        else
+        {
+            Globals.ShowNotes = false;
+        }
+        if (configFile.Read("ShowEvent", "General") == "1")
+        {
+            Globals.ShowEvent = true;
+        }
+        else
+        {
+            Globals.ShowEvent = false;
+        }
 
     }
     public static void CustomStylesGridCell()

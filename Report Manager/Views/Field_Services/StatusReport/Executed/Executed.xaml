@@ -48,7 +48,6 @@
                 AllowDraggingColumns="True"
                 AllowFiltering="True"
                 x:Name="dataGrid"
-                RowHeight="42"
                 AutoGenerateColumns="False"
                 ShowColumnWhenGrouped="True"
                 HeaderLinesVisibility="Horizontal"
@@ -72,9 +71,7 @@
                 BorderBrush="Transparent"
                 
                 SelectionMode="Extended">
-            <dataGrid:SfDataGrid.GroupColumnDescriptions>
-                <dataGrid:GroupColumnDescription ColumnName="Date" />
-            </dataGrid:SfDataGrid.GroupColumnDescriptions>
+            
 
             <dataGrid:SfDataGrid.Columns>
                 <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="150" HeaderText="Status" TextAlignment="Center" MappingName="Status" ValueBinding="{Binding Status}"/>

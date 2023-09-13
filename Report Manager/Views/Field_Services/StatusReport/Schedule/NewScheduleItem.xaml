@@ -7,9 +7,36 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource SystemControlTransientBackgroundBrush}">
 
     <Grid>
-
+        <StackPanel>
+            
+        
+        
+            <Pivot Title="EMAIL">
+                <PivotItem Header="All">
+                    <TextBlock Text="all emails go here." />
+                </PivotItem>
+                <PivotItem Header="Unread">
+                    <TextBlock Text="unread emails go here." />
+                </PivotItem>
+                <PivotItem Header="Flagged">
+                    <StackPanel>
+                        <ComboBox Header="Combobox" SelectedIndex="0">
+                            <ComboBoxItem Content="ComboBoxItem_001"/>
+                            <ComboBoxItem Content="ComboBoxItem_002"/>
+                            <ComboBoxItem Content="ComboBoxItem_003"/>
+                        </ComboBox>
+                        <ColorPicker />
+                        <ColorPickerSlider/>
+                    </StackPanel>
+                    
+                </PivotItem>
+                <PivotItem Header="Urgent">
+                    <TextBlock Text="urgent emails go here." />
+                </PivotItem>
+            </Pivot>
+        </StackPanel>
     </Grid>
 </Page>

@@ -11,6 +11,8 @@ using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Media;
 using Report_Manager.Views.Field_Services.StatusReport.Executed;
+using System.Numerics;
+using Microsoft.UI.Windowing;
 
 namespace Report_Manager.Views;
 
@@ -200,5 +202,33 @@ public sealed partial class StatusReportPage : Page
     {
         MapView view = new();
         view.Activate();
+    }
+    bool x = false;
+    float currentWidth = (float)ShellPage.CurrentMain.ActualWidth;
+    private void btnBorderView_Click(object sender, RoutedEventArgs e)
+    {
+        
+        if(SchedulePage.SchedulePageCurrent != null)
+        {
+            if (x)
+            {
+                x = false;
+                SchedulePage.SchedulePageCurrent.BorderCard.Translation = new Vector3(0, 0, 200);
+                //SchedulePage.SchedulePageCurrent.dataGrid.Margin = new Thickness(0, 180, 0, 10);
+                SchedulePage.SchedulePageCurrent.dataGrid.Translation = new Vector3(0, -0, 5);
+            }
+            else
+            {
+                SchedulePage.SchedulePageCurrent.BorderCard.Translation = new Vector3(currentWidth, 0, 200);
+
+                //SchedulePage.SchedulePageCurrent.dataGrid.Margin = new Thickness(0, 0, 0, 10);
+                SchedulePage.SchedulePageCurrent.dataGrid.Translation = new Vector3(0, -180, 5);
+                x = true;
+            }
+            
+
+
+
+        }
     }
 }
