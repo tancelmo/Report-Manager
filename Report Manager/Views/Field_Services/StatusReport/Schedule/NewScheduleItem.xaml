@@ -16,10 +16,18 @@
         
             <Pivot Title="EMAIL">
                 <PivotItem Header="All">
-                    <TextBlock Text="all emails go here." />
+                    <Grid Height="200">
+                        <StackPanel>
+                            <TextBlock Text="all emails go here." />
+                            <TextBox Header="OP"/>
+                        </StackPanel>
+                        
+                    </Grid>
+                    
                 </PivotItem>
                 <PivotItem Header="Unread">
                     <TextBlock Text="unread emails go here." />
+                    
                 </PivotItem>
                 <PivotItem Header="Flagged">
                     <StackPanel>

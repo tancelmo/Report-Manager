@@ -33,6 +33,9 @@ using Report_Manager.Views.Field_Services.StatusReport.Schedule.SettingsViews;
 using Microsoft.UI.Xaml.Navigation;
 using Org.BouncyCastle.Asn1.X509;
 using System.Drawing;
+using System.Security.Policy;
+using Report_Manager.Views.Field_Services.StatusReport.Schedule;
+using System.Diagnostics.Metrics;
 
 namespace Report_Manager.Views;
 
@@ -384,7 +387,7 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                                 order.Key = reader.GetString(13);
                             if (!await reader.IsDBNullAsync(15))
                                 order.Notes = reader.GetString(15);
-                            if (order.Notes != "")
+                            if (order.Notes != "" && order.Notes != null)
                             {
                                 order.NotesValidation = true;
                             }
@@ -400,6 +403,12 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                                 order.ExpirationDate = reader.GetDateTime(19).ToString("d");
                             if (!await reader.IsDBNullAsync(22))
                                 order.Street = reader.GetString(22);
+                            if (!await reader.IsDBNullAsync(25))
+                                order.Events = reader.GetString(25);
+                            if(order.Events != "" && order.Events != null)
+                            {
+                                order.EventsValidation = true;
+                            }
 
                             scheduleData.Add(order);
 
@@ -483,18 +492,52 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                 lblDatefull.Text = Convert.ToDateTime(myData.Date).ToString("dddd").ToUpper();
                 lblDateshort.Text = Convert.ToDateTime(myData.Date).ToString("d");
                 datePickerSch.Date = myData.Date;
-                if (myData.Notes != "" && StatusReportPage.statusReportCurrent != null && Globals.ShowNotes)
+                double y = 0;
+                
+                if (myData.Notes != "" && myData.Notes != null && StatusReportPage.statusReportCurrent != null && Globals.ShowNotes)
                 {
+
                     StatusReportPage.statusReportCurrent.NotesTeachingTip.IsOpen = true;
                     StatusReportPage.statusReportCurrent.NotesTeachingTip.Title = "Notes";
                     StatusReportPage.statusReportCurrent.NotesTeachingTipText.Text = myData.Notes;
+                    y = StatusReportPage.statusReportCurrent.NotesTeachingTip.ActualHeight;
+                    
                 }
                 else
                 {
                     StatusReportPage.statusReportCurrent.NotesTeachingTip.IsOpen = false;
                 }
 
+                if (myData.Events != "" && myData.Events != null && StatusReportPage.statusReportCurrent != null && Globals.ShowEvent)
+                {
+                    if(StatusReportPage.statusReportCurrent.NotesTeachingTip.IsOpen == true)
+                    {
+                        
+                        StatusReportPage.statusReportCurrent.EventTeachingTip.PlacementMargin = new Thickness(20, y + 40, 20, 20);
+                        StatusReportPage.statusReportCurrent.EventTeachingTip.IsOpen = true;
+                        StatusReportPage.statusReportCurrent.EventTeachingTip.Title = "Events";
+                        StatusReportPage.statusReportCurrent.EventTeachingTipText.Text = myData.Events;
+                        Debug.WriteLine("Notes é true, heigth é: " + y + " e ActualHeigth é: ");
+                    }
+                    else
+                    {
+                        StatusReportPage.statusReportCurrent.EventTeachingTip.PlacementMargin = new Thickness(20);
+                        StatusReportPage.statusReportCurrent.EventTeachingTip.IsOpen = true;
+                        StatusReportPage.statusReportCurrent.EventTeachingTip.Title = "Events";
+                        StatusReportPage.statusReportCurrent.EventTeachingTipText.Text = myData.Events;
+                        Debug.WriteLine("Notes é false");
+                    }
+                    
+                }
+                else
+                {
+                    StatusReportPage.statusReportCurrent.EventTeachingTip.IsOpen = false;
+                }
+
                 datePickerSch.IsEnabled = true;
+                datagridSelectedItemsCounter = dataGrid.SelectedItems.Count;
+                AddMobile.Text = "Enviar " + dataGrid.SelectedItems.Count + " Item(ns) para RPMobile";
+                RemoveMobile.Text = "Remover " + dataGrid.SelectedItems.Count + " Item(ns) para RPMobile";
                 counterLabel.Text = dataGrid.SelectedItems.Count.ToString() + " " + "ExportButtonSelected".GetLocalized();
                 if (int.TryParse(myData.Key, out int num))
                 {
@@ -759,5 +802,136 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
     {
         Globals.ShowNotes = false;
         configFile.Write("ShowNotes", "0", "General");
+    }
+    int selectedItem;
+    string costumer;
+    private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    {
+        
+       
+        if (SchedulePage.SchedulePageCurrent != null)
+        {
+
+            foreach (var data in SchedulePage.SchedulePageCurrent.dataGrid.SelectedItems)
+            {
+                ScheduleData? myData = data as ScheduleData;
+
+                if (myData != null)
+                {
+                    selectedItem = myData.ID;
+                    costumer = myData.Costumer;
+                }
+                using (MySqlConnection Conn = new MySqlConnection(connectionString))
+                {
+                    try
+                    {
+                        Conn.Open();
+                        MySqlCommand comm = Conn.CreateCommand();
+                        comm.CommandText = "UPDATE schedule set mobileAvaliable=1 WHERE ID=@ID";
+                        comm.Parameters.AddWithValue("@ID", selectedItem.ToString());
+                        Debug.WriteLine(comm.CommandText);
+                        comm.ExecuteNonQuery();
+                        //MessageDialog.Show(this, "Enviado " + costumer);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                        //MessageDialog.Show(this, "Deu ruim");
+                    }
+
+
+                    Conn.Close();
+                }
+
+            }
+            //using (MySqlConnection Conn = new MySqlConnection(connectionString))
+            //{
+            //    try
+            //    {
+            //        Conn.Open();
+            //        MySqlCommand comm = Conn.CreateCommand();
+            //        comm.CommandText = "UPDATE schedule set mobileAvaliable=1 WHERE ID=@ID";
+            //        comm.Parameters.AddWithValue("@ID", selectedItem.ToString());
+            //        Debug.WriteLine(comm.CommandText);
+            //        comm.ExecuteNonQuery();
+            //        MessageDialog.Show(this, "Enviado " + costumer);
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Debug.WriteLine(ex.Message);
+            //        MessageDialog.Show(this, "Deu ruim");
+            //    }
+
+
+            //    Conn.Close();
+            //}
+            
+        }
+    }
+
+    private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
+    {
+        if (SchedulePage.SchedulePageCurrent != null)
+        {
+
+            foreach (var data in SchedulePage.SchedulePageCurrent.dataGrid.SelectedItems)
+            {
+                ScheduleData? myData = data as ScheduleData;
+                
+                if (myData != null)
+                {
+                    selectedItem = myData.ID;
+                    costumer = myData.Costumer;
+                    Debug.WriteLine(myData.Costumer);
+                }
+                using (MySqlConnection Conn = new MySqlConnection(connectionString))
+                {
+                    try
+                    {
+                        Conn.Open();
+                        MySqlCommand comm = Conn.CreateCommand();
+                        comm.CommandText = "UPDATE schedule set mobileAvaliable=0 WHERE ID=@ID";
+                        comm.Parameters.AddWithValue("@ID", selectedItem.ToString());
+                        Debug.WriteLine(comm.CommandText);
+                        comm.ExecuteNonQuery();
+                        //MessageDialog.Show(this, "Removido do " + costumer);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                        //MessageDialog.Show(this, "Deu ruim");
+                    }
+
+
+                    Conn.Close();
+                }
+            }
+            //using (MySqlConnection Conn = new MySqlConnection(connectionString))
+            //{
+            //    try
+            //    {
+            //        Conn.Open();
+            //        MySqlCommand comm = Conn.CreateCommand();
+            //        comm.CommandText = "UPDATE schedule set mobileAvaliable=0 WHERE ID=@ID";
+            //        comm.Parameters.AddWithValue("@ID", selectedItem.ToString());
+            //        Debug.WriteLine(comm.CommandText);
+            //        comm.ExecuteNonQuery();
+            //        MessageDialog.Show(this, "Removido do " + costumer);
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Debug.WriteLine(ex.Message);
+            //        MessageDialog.Show(this, "Deu ruim");
+            //    }
+
+
+            //    Conn.Close();
+            //}
+
+        }
     }
 }

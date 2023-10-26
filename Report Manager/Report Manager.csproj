@@ -39,14 +39,14 @@
     <PackageReference Include="CommunityToolkit.WinUI" Version="7.1.2" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230811000-preview2" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231008000" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="MySql.Data" Version="8.1.0" />
-    <PackageReference Include="Syncfusion.Grid.WinUI" Version="22.1.39" />
-    <PackageReference Include="Syncfusion.GridExport.WinUI" Version="22.1.39" />
+    <PackageReference Include="Syncfusion.Grid.WinUI" Version="23.1.38" />
+    <PackageReference Include="Syncfusion.GridExport.WinUI" Version="23.1.38" />
     <PackageReference Include="System.Data.Odbc" Version="8.0.0-preview.6.23329.7" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-    <PackageReference Include="WinUIEx" Version="2.2.0" />
+    <PackageReference Include="WinUIEx" Version="2.3.2" />
   </ItemGroup>
 
   <ItemGroup>

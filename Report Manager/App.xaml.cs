@@ -48,7 +48,7 @@ public partial class App : Application
         StartUp.getStrings();
         StartUp.Language();
 
-        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjU1OTUzNEAzMjMyMmUzMDJlMzBOemFHRW1YL2dDR0RNU1ZXWThvV2xUUVVPWmxaWmVKS05DYnpBck1UL0U4PQ==");
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NHaF5cXmtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdgWXZceXVcR2RZVkN2X0o=");
 
         InitializeComponent();
 

@@ -23,17 +23,19 @@ public sealed partial class Login : WindowEx
 
         CurrentLogin = this;
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/WindowIcon.ico"));
+
         Title = "AppDisplayName".GetLocalized();
         this.SetWindowSize(705, 470);
         this.IsResizable = false;
-        this.IsMaximizable = false;
+        //this.IsMaximizable = false;
+        WindowManager.Get(this).IsMaximizable = false;
         m_AppWindow = GetAppWindowForCurrentWindow();
         GetAppWindowAndPresenter();
         //m_AppWindow.SetIcon("Assets/report-manager.ico");
         TitleBarHelper.SetTitleBarColors(m_AppWindow);
         contentFrame.Navigate(typeof(Views.Login.User));
         version.Text = Globals.AppVersion;
-
+        
 
         
 
@@ -57,6 +59,7 @@ public sealed partial class Login : WindowEx
             // Set inactive window colors
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
             titleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+            
         }
         else
         {
@@ -80,8 +83,8 @@ public sealed partial class Login : WindowEx
         WindowId myWndId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
         m_AppWindow = AppWindow.GetFromWindowId(myWndId);
         _presenter = m_AppWindow.Presenter as OverlappedPresenter;
-        _presenter.IsResizable = false;
-        _presenter.IsMaximizable = false;
+        //_presenter.IsResizable = false;
+        //_presenter.IsMaximizable = false;
         //_presenter.SetBorderAndTitleBar(true, false);
 
         // center screen

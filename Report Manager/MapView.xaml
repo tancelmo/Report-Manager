@@ -8,12 +8,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <windowex:WindowEx.Backdrop>
-        <windowex:MicaSystemBackdrop/>
-    </windowex:WindowEx.Backdrop>
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
 
 
-    <Grid x:Name="contentGrid" Margin="0 0 0 0" >
+    <Grid x:Name="contentGrid" Margin="0 -32 0 0" >
         <Grid.Resources>
             <Storyboard x:Name="storyBoardGrid" x:FieldModifier="public">
                 <DoubleAnimation
@@ -40,6 +40,7 @@
                    HorizontalAlignment="Left"
                    Margin="10,6,0,0"
                    />
+            
 
         </Grid>
         <Grid x:Name="AppTitleBar"  

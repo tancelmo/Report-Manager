@@ -91,6 +91,10 @@ public class ScheduleData
     {
         get; set;
     }
+    public bool EventsValidation
+    {
+        get; set;
+    }
     public bool Bypass
     {
         get; set;
@@ -106,6 +110,11 @@ public class ScheduleData
     }
 
     public string MeterTypes
+    {
+        get; set;
+    }
+
+    public string Events
     {
         get; set;
     }

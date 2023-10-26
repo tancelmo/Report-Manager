@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Media;
 using Report_Manager.Views.Field_Services.StatusReport.Executed;
 using System.Numerics;
 using Microsoft.UI.Windowing;
+using System.Diagnostics;
 
 namespace Report_Manager.Views;
 
@@ -230,5 +231,10 @@ public sealed partial class StatusReportPage : Page
 
 
         }
+    }
+
+    private void EventTeachingTip_PointerEntered(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        Debug.WriteLine("Heigth: " + NotesTeachingTip.Height + "ActualHeigth: " + NotesTeachingTip.ActualHeight);
     }
 }

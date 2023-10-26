@@ -68,14 +68,12 @@
         </Storyboard>
     </Page.Resources>
     <Grid x:Name="ContentArea" >
-        
-        <Border x:Name="BorderCard" x:FieldModifier="public" VerticalAlignment="Top" Translation="0,0,15" Margin="0 10 0 0" CornerRadius="10" BorderThickness="1" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}">
+
+        <Border x:Name="BorderCard" x:FieldModifier="public" Background="{StaticResource LayerFillColorDefaultBrush}" VerticalAlignment="Top" Translation="0,0,15" Margin="0 10 0 0" CornerRadius="10" BorderThickness="1" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}">
             <Border.TranslationTransition>
                 <Vector3Transition/>
             </Border.TranslationTransition>
-            <Border.Background>
-                <SolidColorBrush Color="{ThemeResource TeachingTipTransientBackground}" Opacity="1"/>
-            </Border.Background>
+            
             <Border.Shadow>
                 <ThemeShadow />
             </Border.Shadow>
@@ -174,7 +172,7 @@
                         </ToolTipService.ToolTip>
                     </TextBox>
                     <!--<ToggleButton Width="140" x:FieldModifier="public" x:Name="showPreview" Content="Show Preview" Grid.Column="4" HorizontalAlignment="Right" Grid.Row="3" Margin="10 0 0 0"/>-->
-                    <Button Content="Options" x:Name="optionlocal" Grid.Column="4" Grid.Row="3" x:FieldModifier="public" HorizontalAlignment="Right" Margin="10 0 0 0">
+                    <Button Content="Options" x:Name="optionlocal" Grid.Column="4" Grid.Row="3" x:FieldModifier="public" Width="140" HorizontalAlignment="Right" Margin="10 0 0 0">
                         <Button.Flyout>
                             <MenuFlyout>
                                 <MenuFlyoutItem Text="Open"/>
@@ -259,6 +257,9 @@
         <ProgressRing x:Name="DataGridRing" x:FieldModifier="public" IsActive="True" Visibility="Visible" Width="50" Height="50" Margin="0 300 0 0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock x:Name="Loadinglbl" x:FieldModifier="public" x:Uid="Loading" HorizontalAlignment="Center" FontSize="19" Margin="0 400 0 0" VerticalAlignment="Center" Foreground="{ThemeResource AccentAAFillColorDefaultBrush}"/>
         <Grid x:Name="pageGrid" Visibility="Collapsed" x:FieldModifier="public">
+            <Grid Margin="0 180 0 10" CornerRadius="5">
+                
+            
             <dataGrid:SfDataGrid
                 ItemsSource="{x:Bind Orders, Mode=TwoWay}"
                 FrozenColumnsCount="{x:Bind globals:Globals.FronzenColumns0}"
@@ -276,10 +277,9 @@
                 ShowGroupDropArea="True"
                 Opacity="1"
                 AllowResizingColumns="True"
-                Margin="0 180 0 10"
                 VerticalAlignment="Stretch" 
                 HorizontalAlignment="Stretch"
-                Background="{ThemeResource ControlAltFillColorTransparent}"
+                Background="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
                 CellStyleSelector="{StaticResource rowStyleSelector}"
                 GridLinesVisibility="Horizontal"
                 GroupDropAreaStyle="{StaticResource borderBrushGroupDropArea}"
@@ -298,8 +298,9 @@
                 <dataGrid:SfDataGrid.RecordContextFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Text="Open"/>
-                            <MenuFlyoutSubItem Text="Send to" >
-                                <MenuFlyoutItem Text="Bluetooth" />
+                            <MenuFlyoutSubItem Text="Mobile" >
+                                <MenuFlyoutItem x:Name="AddMobile" Text="Disponibilizar no Report Manager Mobile" Click="MenuFlyoutItem_Click"/>
+                                <MenuFlyoutItem x:Name="RemoveMobile" Text="Remover do Report Manager Mobile" Click="MenuFlyoutItem_Click_1"/>
                                 <MenuFlyoutItem Text="Desktop (shortcut)" />
                                 <MenuFlyoutSubItem Text="Compressed file">
                                     <MenuFlyoutItem Text="Compress and email" />
@@ -307,7 +308,7 @@
                                     <MenuFlyoutItem Text="Compress to .zip" />
                                 </MenuFlyoutSubItem>
                             </MenuFlyoutSubItem>
-                        <MenuFlyoutItem Text="Share" Click="BtnNew_Click">
+                        <MenuFlyoutItem Text="Export" Click="BtnNew_Click">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE72D;"/>
                             </MenuFlyoutItem.Icon>
@@ -340,7 +341,7 @@
                     </MenuFlyout>
 
                 </dataGrid:SfDataGrid.RecordContextFlyout>
-                
+                    
                 <dataGrid:SfDataGrid.Columns>
                     <dataGrid:GridTextColumn TextWrapping="NoWrap" Width="180" HeaderText="Status" TextAlignment="Center" MappingName="Status" ValueBinding="{Binding Status}"/>
                     <dataGrid:GridTemplateColumn MappingName="Installation" FilterRowEditorType="TexBox" ImmediateUpdateColumnFilter="True" >
@@ -358,7 +359,7 @@
                                             <ThemeShadow />
                                         </Border.Shadow>
                                     </Border>
-                                    <Border Width="15" Height="15" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}" BorderThickness="1" Translation="0,0,15" Padding="0" HorizontalAlignment="Right" Margin="0 5 26 0" VerticalAlignment="Top" Visibility="{Binding NotesValidation}" CornerRadius="7.5" Background="{ThemeResource SystemFillColorAttentionBrush}">
+                                    <Border Width="15" Height="15" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}" BorderThickness="1" Translation="0,0,15" Padding="0" HorizontalAlignment="Right" Margin="0 5 26 0" VerticalAlignment="Top" Visibility="{Binding EventsValidation}" CornerRadius="7.5" Background="{ThemeResource SystemFillColorAttentionBrush}">
                                         <TextBlock Text="E" HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 0 0" VerticalAlignment="Bottom" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" FontSize="10" >
                                             <ToolTipService.ToolTip>
                                                 <TextBlock x:Uid="EventInfo"/>
@@ -396,6 +397,7 @@
                     <dataGrid:GridDateColumn  MappingName="ExpirationDate" DisplayDateFormat="D" GroupMode="Value" ValueBinding="{Binding ExpirationDate}"/>
                 </dataGrid:SfDataGrid.Columns>
             </dataGrid:SfDataGrid>
+            </Grid>
             <TeachingTip 
                 
                 x:Name="ResultsPreview" 

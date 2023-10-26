@@ -10,10 +10,14 @@
     mc:Ignorable="d">
 
     <Grid Margin="25" Width="400" Height="600">
-
-        <StackPanel>
-
-            <TextBlock Text="Geral" FontSize="35"/>
+        <TextBlock Text="Geral" FontSize="35"/>
+        <ScrollViewer Margin="0 50 0 50">
+            <StackPanel>
+            
+                
+            
+                
+            
             <TextBlock Margin="0 0 0 10" Text="Select the grid of the follwing settings are be applied"/>
             <ComboBox SelectedIndex="0">
                 <ComboBoxItem Content="Programação"/>
@@ -60,8 +64,8 @@
                 <ComboBoxItem Content="Vertical"/>
                 <ComboBoxItem Content="Both"/>
             </ComboBox>
-
+            
         </StackPanel>
-
+        </ScrollViewer>
     </Grid>
 </Page>

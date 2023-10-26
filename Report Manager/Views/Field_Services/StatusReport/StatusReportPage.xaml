@@ -13,9 +13,18 @@
         <TeachingTip x:Name="NotesTeachingTip"
                      x:FieldModifier="public"
                      PreferredPlacement="RightTop"
-                     PlacementMargin="20">       
+                     PlacementMargin="20"
+                     >       
             <TeachingTip.Content>
                 <TextBlock x:Name="NotesTeachingTipText" x:FieldModifier="public" IsTextSelectionEnabled="True"/>
+            </TeachingTip.Content>
+        </TeachingTip>
+        <TeachingTip x:Name="EventTeachingTip"
+                     x:FieldModifier="public"
+                     PreferredPlacement="RightBottom"
+                     PlacementMargin="20">
+            <TeachingTip.Content>
+                <TextBlock x:Name="EventTeachingTipText" x:FieldModifier="public" IsTextSelectionEnabled="True"/>
             </TeachingTip.Content>
         </TeachingTip>
     </Page.Resources>
@@ -40,7 +49,11 @@
                 </NavigationViewItem>
                 <NavigationViewItem Icon="Calendar" Tag="schedule2" x:Uid="Shell_AVG" />
                 <NavigationViewItem Icon="ContactInfo" Tag="schedule1" x:Uid="Shell_CostumerList" />
-                <NavigationViewItem Icon="ContactInfo" Tag="schedule4" x:Uid="Shell_EventList" />
+                <NavigationViewItem Icon="ContactInfo" Tag="schedule4" x:Uid="Shell_EventList" >
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="Specific Event Name" Tag="schedule4"/>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
 
             </NavigationView.MenuItems>
 

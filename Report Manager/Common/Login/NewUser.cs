@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using MySql.Data.MySqlClient;
 using Report_Manager.Helpers;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Net.Mail;
 
@@ -67,12 +68,21 @@ namespace Report_Manager.Common.Login
         {
             try
             {
-                MailAddress mail = new MailAddress(email);
-                return true;
+                var email1 = new EmailAddressAttribute();
+                if (email1.IsValid(email)){
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception e)
             {
+                Debug.WriteLine("Erro no mail: " + e);
                 return false;
+                
             }
         }
 

@@ -9,9 +9,12 @@
     xmlns:windowex="using:WinUIEx"
     mc:Ignorable="d">
 
-    <windowex:WindowEx.Backdrop>
-        <windowex:MicaSystemBackdrop/>
-    </windowex:WindowEx.Backdrop>
+    <!--<windowex:WindowEx.Backdrop>
+        <windowex:MicaSystemBackdrop />
+    </windowex:WindowEx.Backdrop>-->
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
     <Grid x:Name="window_main" x:FieldModifier="public" >
         <Grid x:Name="AppTitleBarW10" 
               Background="Transparent"
