@@ -23,7 +23,10 @@ namespace Report_Manager
             dialog.CloseButtonText = "CloseButton".GetLocalized();
             dialog.DefaultButton = ContentDialogButton.Primary;
 
-            dialog.Content = message;
+            dialog.Content = new ScrollViewer()
+            {
+                Content = new TextBlock() { Text = message, IsTextSelectionEnabled = true },
+            };
 
             var result = await dialog.ShowAsync();
         }

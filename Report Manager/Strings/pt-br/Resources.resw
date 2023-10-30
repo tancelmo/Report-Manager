@@ -507,4 +507,22 @@
   <data name="PortugueseLanguage" xml:space="preserve">
     <value>Português (Brasil)</value>
   </data>
+  <data name="Add_To_Mobile" xml:space="preserve">
+    <value>{0} CLIENTES DISPONIBILIZADOS NO REPORT MANAGER MOBILE</value>
+  </data>
+  <data name="Removed_From_Mobile" xml:space="preserve">
+    <value>{0} CLIENTES REMOVIDOS DO REPORT MANAGER MOBILE</value>
+  </data>
+  <data name="ClipboardCopy.Text" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="ExportMenu_Label.Text" xml:space="preserve">
+    <value>Exportar</value>
+  </data>
+  <data name="RemoveMenu_Label" xml:space="preserve">
+    <value>Remover {0} item(ns) do Report Manager Mobile</value>
+  </data>
+  <data name="SendMenu_Label" xml:space="preserve">
+    <value>Enviar {0} item(ns) para Report Manager Mobile</value>
+  </data>
 </root>

@@ -28,14 +28,7 @@
 
             <Setter Property="Width" Value="400" />
         </Style>
-        <!--<Storyboard x:Name="Storyboard1"
-                    x:FieldModifier="public">
-            <DoubleAnimation Storyboard.TargetName="BorderCard" Storyboard.TargetProperty="X" Duration="0:0:.5" From="0" To="200" >
-                <DoubleAnimation.EasingFunction>
-                    <CircleEase EasingMode="EaseInOut" />
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-        </Storyboard>-->
+
         <Storyboard x:Name="storyBoardGrid" x:FieldModifier="public">
             <DoubleAnimation
         Storyboard.TargetName="pageGrid"
@@ -176,7 +169,7 @@
                         <Button.Flyout>
                             <MenuFlyout>
                                 <MenuFlyoutItem Text="Open"/>
-                                <MenuFlyoutSubItem Text="Send to" >
+                                <MenuFlyoutSubItem Text="Report Manager Mobile" >
                                     <MenuFlyoutItem Text="Bluetooth" />
                                     <MenuFlyoutItem Text="Desktop (shortcut)" />
                                     <MenuFlyoutSubItem Text="Compressed file">
@@ -185,7 +178,7 @@
                                         <MenuFlyoutItem Text="Compress to .zip" />
                                     </MenuFlyoutSubItem>
                                 </MenuFlyoutSubItem>
-                                <MenuFlyoutItem Text="Share" Click="BtnNew_Click">
+                                <MenuFlyoutItem x:Uid="ExportMenu_Label" Click="excelExp_Click">
                                     <MenuFlyoutItem.Icon>
                                         <FontIcon Glyph="&#xE72D;"/>
                                     </MenuFlyoutItem.Icon>
@@ -193,7 +186,7 @@
                                         <KeyboardAccelerator Key="S" Modifiers="Control" />
                                     </MenuFlyoutItem.KeyboardAccelerators>
                                 </MenuFlyoutItem>
-                                <MenuFlyoutItem Text="Copy" Icon="Copy">
+                                <MenuFlyoutItem Text="Copyar" Icon="Copy" Click="MenuFlyoutItem_Click_2">
                                     <MenuFlyoutItem.KeyboardAccelerators>
                                         <KeyboardAccelerator Key="C" Modifiers="Control"/>
                                     </MenuFlyoutItem.KeyboardAccelerators>
@@ -297,18 +290,16 @@
                 </dataGrid:SfDataGrid.GroupColumnDescriptions>
                 <dataGrid:SfDataGrid.RecordContextFlyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem Text="Open"/>
-                            <MenuFlyoutSubItem Text="Mobile" >
-                                <MenuFlyoutItem x:Name="AddMobile" Text="Disponibilizar no Report Manager Mobile" Click="MenuFlyoutItem_Click"/>
-                                <MenuFlyoutItem x:Name="RemoveMobile" Text="Remover do Report Manager Mobile" Click="MenuFlyoutItem_Click_1"/>
-                                <MenuFlyoutItem Text="Desktop (shortcut)" />
-                                <MenuFlyoutSubItem Text="Compressed file">
-                                    <MenuFlyoutItem Text="Compress and email" />
-                                    <MenuFlyoutItem Text="Compress to .7z" />
-                                    <MenuFlyoutItem Text="Compress to .zip" />
-                                </MenuFlyoutSubItem>
+                        <MenuFlyoutItem Text="Edit" Icon="Edit" Click="BtnEdit_Click"/>
+                            <MenuFlyoutSubItem Text="Report Manager Mobile" >
+                                <MenuFlyoutSubItem.Icon>
+                                    <FontIcon Glyph="&#xE8CC;"/>
+                                </MenuFlyoutSubItem.Icon>
+                                <MenuFlyoutItem x:Name="AddMobile" Click="MenuFlyoutItem_Click"/>
+                                <MenuFlyoutItem x:Name="RemoveMobile" Click="MenuFlyoutItem_Click_1"/>
+                                
                             </MenuFlyoutSubItem>
-                        <MenuFlyoutItem Text="Export" Click="BtnNew_Click">
+                            <MenuFlyoutItem x:Uid="ExportMenu_Label" Click="excelExp_Click">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE72D;"/>
                             </MenuFlyoutItem.Icon>
@@ -316,7 +307,7 @@
                                 <KeyboardAccelerator Key="S" Modifiers="Control" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem Text="Copy" Icon="Copy">
+                        <MenuFlyoutItem x:Uid="ClipboardCopy" Icon="Copy" Click="MenuFlyoutItem_Click_2">
                             <MenuFlyoutItem.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="C" Modifiers="Control"/>
                             </MenuFlyoutItem.KeyboardAccelerators>
@@ -326,18 +317,7 @@
                                 <KeyboardAccelerator Key="Delete" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
-                        <MenuFlyoutSeparator/>
-                        <MenuFlyoutItem Text="Rename"/>
-                        <MenuFlyoutItem Text="Select"/>
-                        <MenuFlyoutItem Text="Item 1">
-                            <MenuFlyoutItem.Template>
-                                <ControlTemplate TargetType="MenuFlyoutItem">
-                                    <StackPanel Margin="15,0,15,5" Orientation="Horizontal">
-                                        <CheckBox Content="Exibir Notas e Eventos"></CheckBox>
-                                    </StackPanel>
-                                </ControlTemplate>
-                            </MenuFlyoutItem.Template>
-                        </MenuFlyoutItem>
+                        
                     </MenuFlyout>
 
                 </dataGrid:SfDataGrid.RecordContextFlyout>

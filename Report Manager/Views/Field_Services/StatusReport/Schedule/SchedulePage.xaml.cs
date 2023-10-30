@@ -36,6 +36,7 @@ using System.Drawing;
 using System.Security.Policy;
 using Report_Manager.Views.Field_Services.StatusReport.Schedule;
 using System.Diagnostics.Metrics;
+using Windows.ApplicationModel.DataTransfer;
 
 namespace Report_Manager.Views;
 
@@ -91,20 +92,28 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
 
     private async void excelExp_Click(object sender, RoutedEventArgs e)
     {
-        ringExcel.Visibility = Visibility.Visible;
-        lblbtnExcel.Text = string.Empty;
-        await Task.Delay(100);
-        var options = new DataGridExcelExportOptions();
-        options.ExcelVersion = ExcelVersion.Excel2013;
-        options.ExcludedColumns.Add("Status");
-        options.GridExportHandler = GridExportHandler;
-        var excelEngine = dataGrid.ExportToExcel(dataGrid.SelectedItems, options);
-        var workBook = excelEngine.Excel.Workbooks[0];
-        MemoryStream outputStream = new MemoryStream();
-        workBook.SaveAs(outputStream);
-        Save(outputStream, "Schedule".GetLocalized() + "_" + DateTime.Now);
-        ringExcel.Visibility = Visibility.Collapsed;
-        lblbtnExcel.Text = "ExportButtonNormal".GetLocalized();
+        if(dataGrid.SelectedItems.Count > 0)
+        {
+            ringExcel.Visibility = Visibility.Visible;
+            lblbtnExcel.Text = string.Empty;
+            await Task.Delay(100);
+            var options = new DataGridExcelExportOptions();
+            options.ExcelVersion = ExcelVersion.Excel2013;
+            options.ExcludedColumns.Add("Status");
+            options.GridExportHandler = GridExportHandler;
+            var excelEngine = dataGrid.ExportToExcel(dataGrid.SelectedItems, options);
+            var workBook = excelEngine.Excel.Workbooks[0];
+            MemoryStream outputStream = new MemoryStream();
+            workBook.SaveAs(outputStream);
+            Save(outputStream, "Schedule".GetLocalized() + "_" + DateTime.Now);
+            ringExcel.Visibility = Visibility.Collapsed;
+            lblbtnExcel.Text = "ExportButtonNormal".GetLocalized();
+        }
+        else
+        {
+            MessageDialog.Show(this, "nenhum item selecionado");
+        }
+        
     }
 
     private void GridExportHandler(object sender, DataGridExcelExportStartOptions e)
@@ -459,8 +468,6 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
 
     }
 
-
-
     private void dataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grids.GridSelectionChangedEventArgs e)
     {
 
@@ -535,9 +542,9 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                 }
 
                 datePickerSch.IsEnabled = true;
-                datagridSelectedItemsCounter = dataGrid.SelectedItems.Count;
-                AddMobile.Text = "Enviar " + dataGrid.SelectedItems.Count + " Item(ns) para RPMobile";
-                RemoveMobile.Text = "Remover " + dataGrid.SelectedItems.Count + " Item(ns) para RPMobile";
+                
+                AddMobile.Text = String.Format("SendMenu_Label".GetLocalized(), dataGrid.SelectedItems.Count);
+                RemoveMobile.Text = String.Format("RemoveMenu_Label".GetLocalized(), dataGrid.SelectedItems.Count);
                 counterLabel.Text = dataGrid.SelectedItems.Count.ToString() + " " + "ExportButtonSelected".GetLocalized();
                 if (int.TryParse(myData.Key, out int num))
                 {
@@ -716,6 +723,7 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
         contentFrame.GoBack();
         return true;
     }
+
     private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
     {
         TryGoBack();
@@ -725,6 +733,7 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
     {
         throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
     }
+
     private void NavView_Loaded(object sender, RoutedEventArgs e)
     {
         // Add handler for ContentFrame navigation.
@@ -803,12 +812,14 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
         Globals.ShowNotes = false;
         configFile.Write("ShowNotes", "0", "General");
     }
+
     int selectedItem;
     string costumer;
     private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
-        
-       
+        string costumerSelected = string.Empty;
+        int qty = 0;
+
         if (SchedulePage.SchedulePageCurrent != null)
         {
 
@@ -818,8 +829,10 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
 
                 if (myData != null)
                 {
+                    ++qty;
                     selectedItem = myData.ID;
                     costumer = myData.Costumer;
+                    costumerSelected += qty + "ª :  " + myData.Costumer + "\r";
                 }
                 using (MySqlConnection Conn = new MySqlConnection(connectionString))
                 {
@@ -837,7 +850,7 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                     catch (Exception ex)
                     {
                         Debug.WriteLine(ex.Message);
-                        //MessageDialog.Show(this, "Deu ruim");
+                        
                     }
 
 
@@ -845,34 +858,15 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                 }
 
             }
-            //using (MySqlConnection Conn = new MySqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        Conn.Open();
-            //        MySqlCommand comm = Conn.CreateCommand();
-            //        comm.CommandText = "UPDATE schedule set mobileAvaliable=1 WHERE ID=@ID";
-            //        comm.Parameters.AddWithValue("@ID", selectedItem.ToString());
-            //        Debug.WriteLine(comm.CommandText);
-            //        comm.ExecuteNonQuery();
-            //        MessageDialog.Show(this, "Enviado " + costumer);
+            MessageDialog.Show(this, String.Format("Add_To_Mobile".GetLocalized(), qty) + "\n\n" + costumerSelected);
 
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Debug.WriteLine(ex.Message);
-            //        MessageDialog.Show(this, "Deu ruim");
-            //    }
-
-
-            //    Conn.Close();
-            //}
-            
         }
     }
 
     private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
     {
+        string costumerSelected = string.Empty;
+        int qty = 0;
         if (SchedulePage.SchedulePageCurrent != null)
         {
 
@@ -882,9 +876,11 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                 
                 if (myData != null)
                 {
+                    ++qty;
                     selectedItem = myData.ID;
                     costumer = myData.Costumer;
-                    Debug.WriteLine(myData.Costumer);
+                    costumerSelected += qty + "ª :  " + myData.Costumer + "\r";
+                    
                 }
                 using (MySqlConnection Conn = new MySqlConnection(connectionString))
                 {
@@ -909,29 +905,15 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                     Conn.Close();
                 }
             }
-            //using (MySqlConnection Conn = new MySqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        Conn.Open();
-            //        MySqlCommand comm = Conn.CreateCommand();
-            //        comm.CommandText = "UPDATE schedule set mobileAvaliable=0 WHERE ID=@ID";
-            //        comm.Parameters.AddWithValue("@ID", selectedItem.ToString());
-            //        Debug.WriteLine(comm.CommandText);
-            //        comm.ExecuteNonQuery();
-            //        MessageDialog.Show(this, "Removido do " + costumer);
-
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Debug.WriteLine(ex.Message);
-            //        MessageDialog.Show(this, "Deu ruim");
-            //    }
-
-
-            //    Conn.Close();
-            //}
+            
+            MessageDialog.Show(this, String.Format("Removed_From_Mobile".GetLocalized(), qty) + "\n\n" + costumerSelected);
 
         }
+    }
+
+    private void MenuFlyoutItem_Click_2(object sender, RoutedEventArgs e)
+    {
+        dataGrid.ClipboardController.Copy();
+        
     }
 }
