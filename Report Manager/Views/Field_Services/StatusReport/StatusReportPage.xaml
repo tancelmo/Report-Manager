@@ -39,7 +39,7 @@
                         IsSettingsVisible="False"
                         VerticalAlignment="Top"
                         AlwaysShowHeader="False"
-                        Background="Transparent" Opacity="1">
+                        Background="Transparent" Opacity="1" FontFamily="Aptos">
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Calendar" Tag="schedule" x:Uid="Shell_Schedule" />
                 <NavigationViewItem Tag="add" Content="Executed" x:Uid="Shell_Executed">

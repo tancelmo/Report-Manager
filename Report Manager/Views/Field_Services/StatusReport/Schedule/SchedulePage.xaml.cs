@@ -100,6 +100,11 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
             var options = new DataGridExcelExportOptions();
             options.ExcelVersion = ExcelVersion.Excel2013;
             options.ExcludedColumns.Add("Status");
+            options.ExcludedColumns.Add("Bypass");
+            options.ExcludedColumns.Add("Emergency");
+            options.ExcludedColumns.Add("ExpirationDate");
+            options.ExcludedColumns.Add("Price");
+            options.ExcludedColumns.Add("Date");
             options.GridExportHandler = GridExportHandler;
             var excelEngine = dataGrid.ExportToExcel(dataGrid.SelectedItems, options);
             var workBook = excelEngine.Excel.Workbooks[0];
@@ -543,8 +548,8 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
 
                 datePickerSch.IsEnabled = true;
                 
-                AddMobile.Text = String.Format("SendMenu_Label".GetLocalized(), dataGrid.SelectedItems.Count);
-                RemoveMobile.Text = String.Format("RemoveMenu_Label".GetLocalized(), dataGrid.SelectedItems.Count);
+                AddMobile.Text = String.Format("Grid_Menu_Flyout_Add_From_RPM".GetLocalized(), dataGrid.SelectedItems.Count);
+                RemoveMobile.Text = String.Format("Grid_Menu_Flyout_Remove_From_RPM".GetLocalized(), dataGrid.SelectedItems.Count);
                 counterLabel.Text = dataGrid.SelectedItems.Count.ToString() + " " + "ExportButtonSelected".GetLocalized();
                 if (int.TryParse(myData.Key, out int num))
                 {
@@ -564,7 +569,7 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                 {
                     if (ResultsPreview.IsOpen == false)
                     {
-
+                        //ResultsPreview.Content = String.Format("{0,-2} {1,-2}\n{2,-2} {3,-2}", "Cliente:", myData.Costumer, "Data de hoje pra test:", Convert.ToDateTime(myData.Date).ToString("D"));
                         ResultsPreview.IsOpen = true;
                         PrevStatus.Text = myData.Status;
                         PrevInstallation.Text = myData.Installation;
@@ -814,7 +819,7 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
     }
 
     int selectedItem;
-    string costumer;
+    string costumer = string.Empty;
     private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
     {
         string costumerSelected = string.Empty;
@@ -915,5 +920,27 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
     {
         dataGrid.ClipboardController.Copy();
         
+    }
+
+    private void Execute_Click(object sender, RoutedEventArgs e)
+    {
+        if (dataGrid.SelectedItem != null)
+        {
+            
+            FieldServicesDialogs.ExecuteActionOptions(this);
+
+        }
+        else
+        {
+            MessageDialog.Show(this, "NoItemSelected".GetLocalized());
+            statustext.SelectedValue = 0;
+
+        }
+    }
+
+    private void Grid_MenuSelectAll_Click(object sender, RoutedEventArgs e)
+    {
+        dataGrid.SelectAll();
+        counterLabel.Text = dataGrid.SelectedItems.Count.ToString() + " " + "ExportButtonSelected".GetLocalized();
     }
 }

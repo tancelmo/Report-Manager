@@ -7,7 +7,7 @@
     xmlns:dataGrid="using:Syncfusion.UI.Xaml.DataGrid"
     xmlns:local="using:Report_Manager.Data"
     xmlns:globals="using:Report_Manager"
-    xmlns:syncfusion="using:Syncfusion.UI.Xaml.Editors"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.Core"
     Loaded="Page_Loaded"
     mc:Ignorable="d">
 
@@ -24,9 +24,13 @@
             <Setter Property="FilterPopupWidth" Value="400" />
         </Style>
 
-        <Style TargetType="dataGrid:AdvancedFilterControl" x:Name="test">
-
+        <Style TargetType="dataGrid:GridFilterControl" x:Name="test">
+            <Setter Property="Background" Value="red" />
             <Setter Property="Width" Value="400" />
+            <Setter Property="CornerRadius" Value="40" />
+            <Setter Property="FilterPopupWidth" Value="400"/>
+            
+            
         </Style>
 
         <Storyboard x:Name="storyBoardGrid" x:FieldModifier="public">
@@ -61,8 +65,7 @@
         </Storyboard>
     </Page.Resources>
     <Grid x:Name="ContentArea" >
-
-        <Border x:Name="BorderCard" x:FieldModifier="public" Background="{StaticResource LayerFillColorDefaultBrush}" VerticalAlignment="Top" Translation="0,0,15" Margin="0 10 0 0" CornerRadius="10" BorderThickness="1" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}">
+        <Border x:Name="BorderCard" x:FieldModifier="public" Background="{StaticResource LayerOnMicaBaseAltFillColorDefaultBrush}" VerticalAlignment="Top" Translation="0,0,15" Margin="0 10 0 0" CornerRadius="10" BorderThickness="1" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}">
             <Border.TranslationTransition>
                 <Vector3Transition/>
             </Border.TranslationTransition>
@@ -280,7 +283,6 @@
                 ColumnWidthMode="Auto"                
                 HeaderRowHeight="40"
                 SelectionUnit="Row"
-                FontFamily="Ubuntu"
                 BorderBrush="Transparent"
                 SelectionChanged="dataGrid_SelectionChanged"
                 SelectionMode="Extended"
@@ -290,7 +292,16 @@
                 </dataGrid:SfDataGrid.GroupColumnDescriptions>
                 <dataGrid:SfDataGrid.RecordContextFlyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem Text="Edit" Icon="Edit" Click="BtnEdit_Click"/>
+                            <MenuFlyoutItem x:Name="Execute"  x:Uid="Grid_Menu_Flyout_Execute" Icon="Accept" Click="Execute_Click">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="Enter" Modifiers="Control" />
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem  x:Uid="Grid_Menu_Flyout_Edit" Icon="Edit" Click="BtnEdit_Click">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="E" Modifiers="Control" />
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
                             <MenuFlyoutSubItem Text="Report Manager Mobile" >
                                 <MenuFlyoutSubItem.Icon>
                                     <FontIcon Glyph="&#xE8CC;"/>
@@ -299,7 +310,7 @@
                                 <MenuFlyoutItem x:Name="RemoveMobile" Click="MenuFlyoutItem_Click_1"/>
                                 
                             </MenuFlyoutSubItem>
-                            <MenuFlyoutItem x:Uid="ExportMenu_Label" Click="excelExp_Click">
+                            <MenuFlyoutItem x:Uid="Grid_Menu_Flyout_Export" Click="excelExp_Click">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE72D;"/>
                             </MenuFlyoutItem.Icon>
@@ -307,16 +318,22 @@
                                 <KeyboardAccelerator Key="S" Modifiers="Control" />
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem x:Uid="ClipboardCopy" Icon="Copy" Click="MenuFlyoutItem_Click_2">
+                            <MenuFlyoutItem x:Uid="Grid_Menu_Flyout_Copy" Icon="Copy" Click="MenuFlyoutItem_Click_2">
                             <MenuFlyoutItem.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="C" Modifiers="Control"/>
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem Text="Delete" Icon="Delete">
-                            <MenuFlyoutItem.KeyboardAccelerators>
-                                <KeyboardAccelerator Key="Delete" />
-                            </MenuFlyoutItem.KeyboardAccelerators>
-                        </MenuFlyoutItem>
+                            <MenuFlyoutItem x:Name="Grid_MenuDelete" x:Uid="Grid_Menu_Flyout_Delete" Icon="Delete">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="Delete" />
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutSeparator/>
+                            <MenuFlyoutItem x:Name="Grid_MenuSelectAll" Icon="SelectAll" x:Uid="Grid_Menu_Flyout_SelectAll" Click="Grid_MenuSelectAll_Click">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="A" Modifiers="Control"/>
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                </MenuFlyoutItem>
                         
                     </MenuFlyout>
 
@@ -357,24 +374,24 @@
                         
                     
                     <!--<dataGrid:GridTextColumn  MappingName="Installation" FilterRowEditorType="TexBox" ImmediateUpdateColumnFilter="True" ValueBinding="{Binding Installation}" />-->
-                    <dataGrid:GridTextColumn  MappingName="Team" ValueBinding="{Binding Team}"/>
-                    <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="300" MappingName="Costumer" ValueBinding="{Binding Costumer}"/>
-                    <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="300" MappingName="Meter" ValueBinding="{Binding Meter}"/>
-                    <dataGrid:GridTextColumn  MappingName="MeterSerialNumber" Width="150" ValueBinding="{Binding MeterSerialNumber}"/>
-                    <dataGrid:GridTextColumn  MappingName="MeterType" Width="80" ValueBinding="{Binding MeterType}"/>
-                    <dataGrid:GridTextColumn  MappingName="Key" ValueBinding="{Binding Key}"/>
-                    <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="300" MappingName="Classification" ValueBinding="{Binding Classification}"/>
-                    <dataGrid:GridTextColumn  TextWrapping="NoWrap" Width="300"  MappingName="PTZ" ValueBinding="{Binding PTZ}"/>
-                    <dataGrid:GridTextColumn  MappingName="PTZSerialNumber" ValueBinding="{Binding PTZSerialNumber}"/>
-                    <dataGrid:GridTextColumn  TextWrapping="NoWrap" MappingName="City" ValueBinding="{Binding City}"/>
-                    <dataGrid:GridTextColumn  MappingName="District" ValueBinding="{Binding District}"/>
-                    <dataGrid:GridTextColumn  MappingName="Street" ValueBinding="{Binding Street}"/>
-                    <dataGrid:GridDateColumn  MappingName="Date" DisplayDateFormat="D" GroupMode="Value" ValueBinding="{Binding Date}"/>
-                    <dataGrid:GridTextColumn  MappingName="Price" ValueBinding="{Binding Price, Converter={StaticResource currencyFormatConverter}}"/>
-                    <dataGrid:GridTextColumn  MappingName="Notes" Width="300" TextWrapping="NoWrap" ValueBinding="{Binding Notes}"/>
-                    <dataGrid:GridCheckBoxColumn  MappingName="Bypass" ValueBinding="{Binding Bypass}"/>
-                    <dataGrid:GridCheckBoxColumn  MappingName="Emergency" Width="150" ValueBinding="{Binding Emergency}"/>
-                    <dataGrid:GridDateColumn  MappingName="ExpirationDate" DisplayDateFormat="D" GroupMode="Value" ValueBinding="{Binding ExpirationDate}"/>
+                    <dataGrid:GridTextColumn MappingName="Team" ValueBinding="{Binding Team}"/>
+                    <dataGrid:GridTextColumn TextWrapping="NoWrap" Width="300" MappingName="Costumer" ValueBinding="{Binding Costumer}"/>
+                    <dataGrid:GridTextColumn TextWrapping="NoWrap" Width="300" MappingName="Meter" ValueBinding="{Binding Meter}"/>
+                    <dataGrid:GridTextColumn MappingName="MeterSerialNumber" Width="150" ValueBinding="{Binding MeterSerialNumber}"/>
+                    <dataGrid:GridTextColumn MappingName="MeterType" Width="80" ValueBinding="{Binding MeterType}"/>
+                    <dataGrid:GridTextColumn MappingName="Key" ValueBinding="{Binding Key}"/>
+                    <dataGrid:GridTextColumn TextWrapping="NoWrap" Width="300" MappingName="Classification" ValueBinding="{Binding Classification}"/>
+                    <dataGrid:GridTextColumn TextWrapping="NoWrap" Width="300"  MappingName="PTZ" ValueBinding="{Binding PTZ}"/>
+                    <dataGrid:GridTextColumn MappingName="PTZSerialNumber" ValueBinding="{Binding PTZSerialNumber}"/>
+                    <dataGrid:GridTextColumn TextWrapping="NoWrap" MappingName="City" ValueBinding="{Binding City}"/>
+                    <dataGrid:GridTextColumn MappingName="District" ValueBinding="{Binding District}"/>
+                    <dataGrid:GridTextColumn MappingName="Street" ValueBinding="{Binding Street}"/>
+                    <dataGrid:GridDateColumn MappingName="Date" DisplayDateFormat="D" GroupMode="Value" ValueBinding="{Binding Date}"/>
+                    <dataGrid:GridTextColumn MappingName="Price" ValueBinding="{Binding Price, Converter={StaticResource currencyFormatConverter}}"/>
+                    <dataGrid:GridTextColumn MappingName="Notes" Width="300" TextWrapping="NoWrap" ValueBinding="{Binding Notes}"/>
+                    <dataGrid:GridCheckBoxColumn MappingName="Bypass" ValueBinding="{Binding Bypass}"/>
+                    <dataGrid:GridCheckBoxColumn MappingName="Emergency" Width="150" ValueBinding="{Binding Emergency}"/>
+                    <dataGrid:GridDateColumn MappingName="ExpirationDate" DisplayDateFormat="D" GroupMode="Value" ValueBinding="{Binding ExpirationDate}"/>
                 </dataGrid:SfDataGrid.Columns>
             </dataGrid:SfDataGrid>
             </Grid>

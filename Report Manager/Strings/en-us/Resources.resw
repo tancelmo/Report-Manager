@@ -702,16 +702,31 @@
   <data name="Removed_From_Mobile" xml:space="preserve">
     <value>{0} COSTUMERS REMOVED FROM REPORT MANAGER MOBILE</value>
   </data>
-  <data name="ClipboardCopy.Text" xml:space="preserve">
+  <data name="Grid_Menu_Flyout_Copy.Text" xml:space="preserve">
     <value>Copy</value>
   </data>
-  <data name="ExportMenu_Label.Text" xml:space="preserve">
+  <data name="Grid_Menu_Flyout_Export.Text" xml:space="preserve">
     <value>Export</value>
   </data>
-  <data name="RemoveMenu_Label" xml:space="preserve">
+  <data name="Grid_Menu_Flyout_Remove_From_RPM" xml:space="preserve">
     <value>Remove {0} item(ns) from Report Manager Mobile</value>
   </data>
   <data name="SendMenu_Label" xml:space="preserve">
     <value>Send {0} item(ns) to Report Manager Mobile</value>
+  </data>
+  <data name="Grid_Menu_Flyout_Edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Grid_Menu_Flyout_Execute.Text" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="Grid_Menu_Flyout_Add_From_RPM" xml:space="preserve">
+    <value>Send {0} item(ns) to Report Manager Mobile</value>
+  </data>
+  <data name="Grid_Menu_Flyout_Delete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Grid_Menu_Flyout_SelectAll.Text" xml:space="preserve">
+    <value>Select All</value>
   </data>
 </root>

@@ -525,4 +525,28 @@
   <data name="SendMenu_Label" xml:space="preserve">
     <value>Enviar {0} item(ns) para Report Manager Mobile</value>
   </data>
+  <data name="Grid_Menu_Flyout_Add_From_RPM" xml:space="preserve">
+    <value>Enviar {0} item(ns) para Report Manager Mobile</value>
+  </data>
+  <data name="Grid_Menu_Flyout_Copy.Text" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="Grid_Menu_Flyout_Delete.Text" xml:space="preserve">
+    <value>Deletar</value>
+  </data>
+  <data name="Grid_Menu_Flyout_Edit.Text" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Grid_Menu_Flyout_Execute.Text" xml:space="preserve">
+    <value>Executar</value>
+  </data>
+  <data name="Grid_Menu_Flyout_Export.Text" xml:space="preserve">
+    <value>Exportar</value>
+  </data>
+  <data name="Grid_Menu_Flyout_Remove_From_RPM" xml:space="preserve">
+    <value>Remover {0} item(ns) do Report Manager Mobile</value>
+  </data>
+  <data name="Grid_Menu_Flyout_SelectAll.Text" xml:space="preserve">
+    <value>Selecionar Tudo</value>
+  </data>
 </root>

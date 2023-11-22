@@ -222,23 +222,23 @@
     <comment>No Items match </comment>
   </data>
   <data name="NotContains" xml:space="preserve">
-    <value>Does Not Contain</value>
+    <value>Não Contem</value>
     <comment>Text for NotContains</comment>
   </data>
   <data name="NotEmpty" xml:space="preserve">
-    <value>Not Empty</value>
+    <value>Não Vazias</value>
     <comment>Text for NotEmpty</comment>
   </data>
   <data name="NotEquals" xml:space="preserve">
-    <value>Does Not Equal</value>
+    <value>Não É Igual</value>
     <comment>Text For NotEquals</comment>
   </data>
   <data name="NotNull" xml:space="preserve">
-    <value>Not Null</value>
+    <value>Não Nulo</value>
     <comment>Text for NotNull</comment>
   </data>
   <data name="Null" xml:space="preserve">
-    <value>Null</value>
+    <value>Nulo</value>
     <comment>Text for Null</comment>
   </data>
   <data name="OK" xml:space="preserve">
@@ -334,11 +334,11 @@
     <comment>Text for Drop mutiple rows in RowDragAndDrop popup when grid has no records</comment>
   </data>
   <data name="NotBeginsWith" xml:space="preserve">
-    <value>Does Not Begin With</value>
+    <value>Não Começa Com</value>
     <comment>Text for NotBeginsWith</comment>
   </data>
   <data name="NotEndsWith" xml:space="preserve">
-    <value>Does Not End With</value>
+    <value>Não Termina Com</value>
     <comment>Text for NotEndsWith</comment>
   </data>
 </root>
