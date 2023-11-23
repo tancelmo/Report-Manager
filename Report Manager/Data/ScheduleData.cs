@@ -95,6 +95,11 @@ public class ScheduleData
     {
         get; set;
     }
+
+    public bool MobileValidation
+    {
+        get; set;
+    }
     public bool Bypass
     {
         get; set;

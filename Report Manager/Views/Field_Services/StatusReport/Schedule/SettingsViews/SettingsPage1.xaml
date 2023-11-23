@@ -9,7 +9,7 @@
     xmlns:globals="using:Report_Manager"
     mc:Ignorable="d">
 
-    <Grid Margin="25" Width="400" Height="600">
+    <Grid Margin="10 25 0 0" Width="400" Height="600">
         <TextBlock Text="Geral" FontSize="35"/>
         <ScrollViewer Margin="0 50 0 50">
             <StackPanel>

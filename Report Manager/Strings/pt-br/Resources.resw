@@ -549,4 +549,7 @@
   <data name="Grid_Menu_Flyout_SelectAll.Text" xml:space="preserve">
     <value>Selecionar Tudo</value>
   </data>
+  <data name="MobileIndicator.Text" xml:space="preserve">
+    <value>Disponível em Dispositivo Móvel</value>
+  </data>
 </root>

@@ -729,4 +729,13 @@
   <data name="Grid_Menu_Flyout_SelectAll.Text" xml:space="preserve">
     <value>Select All</value>
   </data>
+  <data name="MobileIndicator.Text" xml:space="preserve">
+    <value>Mobile Avaliable</value>
+  </data>
+  <data name="ClipboardCopy.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="ExportMenu_Label.Text" xml:space="preserve">
+    <value>Export</value>
+  </data>
 </root>

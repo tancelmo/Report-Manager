@@ -345,7 +345,7 @@
                         <dataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <TextBlock HorizontalAlignment="Left" Margin="20 0 0 0" FontFamily="Ubuntu" VerticalAlignment="Center" Text="{Binding Installation}"/>
+                                    <TextBlock HorizontalAlignment="Left" Width="150" Margin="20 0 0 0" FontFamily="Ubuntu" VerticalAlignment="Center" Text="{Binding Installation}"/>
                                     <Border Width="15" Height="15" BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}" BorderThickness="1" Translation="0,0,15" Padding="0" HorizontalAlignment="Right" Margin="0 5 6 0" VerticalAlignment="Top" Visibility="{Binding NotesValidation}" CornerRadius="7.5" Background="{ThemeResource SystemFillColorCautionBrush}">
                                         <TextBlock Text="N" HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 1 0" VerticalAlignment="Bottom" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" FontSize="10">
                                             <ToolTipService.ToolTip>
@@ -366,7 +366,18 @@
                                             <ThemeShadow />
                                         </Border.Shadow>
                                     </Border>
-                                </Grid>
+                                        <!--<Border BorderBrush="{ThemeResource TabViewSelectedItemBorderBrush}" BorderThickness="1" Translation="0,0,15" Padding="0" HorizontalAlignment="Right" Margin="0 5 46 0" VerticalAlignment="Top" Visibility="{Binding MobileValidation}" CornerRadius="7.5" Background="Transparent">-->
+                                            <!--<TextBlock Text="Móvel" HorizontalAlignment="Center" FontWeight="Bold" Margin="5 0 5 0" VerticalAlignment="Bottom" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" FontSize="10" >-->
+                                            <FontIcon Glyph="&#xEC75;" FontSize="18" Foreground="Green" Translation="0,0,15" Margin="0 5 45 0"  HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="{Binding MobileValidation}"/>
+                                            <ToolTipService.ToolTip>
+                                                <TextBlock x:Uid="MobileIndicator"/>
+                                            </ToolTipService.ToolTip>
+                                        <!--</TextBlock>-->
+                                            <!--<Border.Shadow>
+                                                <ThemeShadow />
+                                            </Border.Shadow>
+                                        </Border>-->
+                                    </Grid>
                             </DataTemplate>
                         </dataGrid:GridTemplateColumn.CellTemplate>
                     </dataGrid:GridTemplateColumn>
@@ -498,7 +509,7 @@
                                 x:FieldModifier="public"
                                 IsPaneToggleButtonVisible="True"
                                 PaneDisplayMode="Left"
-                                Margin="-10 -80 "
+                                Margin="-10 -80 -10 -10"
                                 Background="{ThemeResource TeachingTipTransientBackground}"
                                 OpenPaneLength="200"
                                     
@@ -527,7 +538,7 @@
                             <NavigationViewItem Icon="ContactInfo" Tag="schedule4" x:Uid="Shell_EventList" Margin="0 0 0 100"/>
                         </NavigationView.MenuItems>
                         <Frame x:Name="contentFrame"
-                               Width="500"
+                               
                                NavigationFailed="contentFrame_NavigationFailed"/>
                     </NavigationView>
                 </TeachingTip.Content>

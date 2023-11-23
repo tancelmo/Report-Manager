@@ -423,6 +423,9 @@ public sealed partial class SchedulePage : Page, INotifyPropertyChanged
                             {
                                 order.EventsValidation = true;
                             }
+                            if (!await reader.IsDBNullAsync(23))
+                                order.MobileValidation = reader.GetBoolean(23);
+                            
 
                             scheduleData.Add(order);
 
